@@ -170,10 +170,10 @@ useEffect(() => {
                   <Link to='/'>Home</Link>
                  </li>
                  <li className="nav-item ms-3">
-                  <Link to='/features'>Features</Link>
+                  <Link to='/shop'>Shop</Link>
                  </li>
                  <li className="nav-item ms-3">
-                  <Link to='/shop'>Shop</Link>
+                  <Link to='/join'>Join Us</Link>
                  </li>
                  <li className="nav-item ms-3">
                   <Link to='/about'>AboutUs</Link>
