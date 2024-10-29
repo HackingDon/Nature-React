@@ -1,0 +1,94 @@
+.head-shop{
+    height: 550px;
+    background-image: url(images/shop-1.jpg);
+    background-size: cover;
+}
+body, .card-body{
+    background-color: #FDFBF8;
+}
+select{
+    background-color: rgb(239, 239, 239) !important;
+    color: gray !important;
+}
+select:hover{
+    cursor: pointer;
+}
+option{
+    background-color: #fff;
+}
+.form-group{
+    display: flex;
+}
+.input-search{
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.form-group{
+    background-color: #fff !important;
+    border: 1px solid rgb(202, 199, 199);
+}
+.form-control{
+    border: none;
+} 
+.form-control:focus{
+    box-shadow: none;
+}
+.cat:hover{
+    color: #1c313d;
+    text-decoration: none;
+}
+.filter{
+    position: relative;
+    top: 20px;
+}
+.range{
+    position: absolute;
+    width: 50%;
+    
+}
+.left-2{
+    left: 48%;
+}
+.card{
+    cursor:pointer;
+}
+.card-img{
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+.card-img-top{
+    position: absolute;
+    height: 100%;
+}
+.card-img-top:hover{
+    transform: scale(1.1);
+}
+.card-img-label{
+    position: absolute;
+    left: 60%;
+    background-color: rgb(255, 187, 0);
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: #fff;
+}
+.card-text a,.cat{
+    text-decoration: none;
+    color: #254151;
+}
+.card-text a:hover{
+    color:rgb(255, 187, 0) ;
+    
+}
+.card-label:hover{
+    color: #254151 !important;
+}
+.product-img{
+    height: 80px;
+    width: 80px;
+}
+.fw-500{
+    font-weight: 500 !important;
+}
