@@ -6,11 +6,43 @@ import { Link } from "react-router-dom";
 const Shop = () => {
   const cards = [
     {
+      src: "src/components/images/shop-6-580x580.jpg",
+      title: "Backpack",
+      label: "New",
+      del: "",
+      price: 15.00,
+      available:"Out of stock"
+    },
+    {
+      src: "src/components/images/shop-3-580x580.jpg",
+      title: "Bag",
+      label: "Collection",
+      del: "",
+      price: 65.00,
+      available:""
+    },
+    {
+      src: "src/components/images/shop-5-580x580.jpg",
+      title: "Cap",
+      label: "Goods",
+      del: "",
+      price: 25.00,
+      available:""
+    },
+    {
       src: "src/components/images/shop-1-580x580.jpg",
       title: "Cup(Green Planet)",
       label: "Goods",
       del: "$20.00",
-      price: "$16.00",
+      price: 16.00,
+      available:"Sale"
+    },
+    {
+      src: "src/components/images/shop-2-580x580.jpg",
+      title: "Notebook",
+      label: "New",
+      del: "$20.00",
+      price: 15.00,
       available:"Sale"
     },
     {
@@ -18,41 +50,9 @@ const Shop = () => {
       title: "T-shirt",
       label: "Collection",
       del: "",
-      price: "$20.00",
+      price: 20.00,
       available:"Out of stock"
-    },
-    {
-      src: "src/components/images/shop-5-580x580.jpg",
-      title: "Cap",
-      label: "Goods",
-      del: "",
-      price: "$25.00",
-      available:""
-    },
-    {
-      src: "src/components/images/shop-6-580x580.jpg",
-      title: "Backpack",
-      label: "New",
-      del: "",
-      price: "$15.00",
-      available:"Out of stock"
-    },
-    {
-      src: "src/components/images/shop-2-580x580.jpg",
-      title: "Notebook",
-      label: "New",
-      del: "$20.00",
-      price: "$15.00",
-      available:"Sale"
-    },
-    {
-      src: "src/components/images/shop-3-580x580.jpg",
-      title: "Bag",
-      label: "Collection",
-      del: "",
-      price: "$65.00",
-      available:""
-    },
+    }  
   ];
   const prods = [
     {
@@ -60,7 +60,7 @@ const Shop = () => {
       title: "Cup(Green Planet)",
       label: "Goods",
       del: "$20.00",
-      price: "$16.00",
+      price: 16.00,
       available:"Sale"
     },
     {
@@ -68,7 +68,7 @@ const Shop = () => {
       title: "T-shirt",
       label: "Collection",
       del: "",
-      price: "$20.00",
+      price: 20.00,
       available:"Out of stock"
     },
     {
@@ -76,10 +76,9 @@ const Shop = () => {
       title: "Cap",
       label: "Goods",
       del: "",
-      price: "$25.00",
+      price: 25.00,
       available:""
     }
-  
   ]
   const [value1,setValue1] = useState(10);
   const [value2,setValue2] = useState(70);
@@ -101,7 +100,7 @@ const Shop = () => {
   }
   function leave(index){
 const para = document.querySelectorAll("#para");
-    para[index].innerHTML = `<del>${cards[index].del}</del> ${cards[index].price}`
+    para[index].innerHTML = `<del>${cards[index].del}</del> $${cards[index].price}.00`
   }
   return (
     <div>
@@ -126,7 +125,7 @@ const para = document.querySelectorAll("#para");
             </select>
             <div className="row w-100">
               {cards.map((card,index) => (
-                <div className="col-4">
+                <div className={card.price>=value1 && card.price<=value2 ? 'col-4':'d-none'}>
                   <div className="card mt-5" onMouseEnter={()=>enter(index)} onMouseLeave={()=>leave(index)}>
                     <div className="card-img">
                     <img
@@ -145,7 +144,7 @@ const para = document.querySelectorAll("#para");
                         {card.label}
                       </span>
                       <p id="para" className="card-text fw-bold mt-3 color">
-                        <del>{card.del}</del> {card.price}
+                        <del>{card.del}</del> ${card.price}.00
                       </p>
                     </div>
                   </div>
@@ -178,7 +177,6 @@ const para = document.querySelectorAll("#para");
               </div>
               <div className="d-flex mt-5 w-100 justify-content-between">
                 <label className="mt-3 fw-bold color fs-5">Price : ${value1} - ${value2}</label>
-                <button className="btn mt-3 btn-outline-warning rounded-4 pe-4 ps-4">Filter</button>
               </div>
               <h3 className="fw-500 mt-5">Products</h3>
               <ul className="mt-4 p-0">
@@ -189,7 +187,7 @@ const para = document.querySelectorAll("#para");
                     <div className="d-block color">
                       <p className="fw-500">{card.title}</p>
                       <p>
-                          <del>{card.del}</del> {card.price}
+                          <del>{card.del}</del> ${card.price}.00
                         </p>
                     </div>
                   </li>
