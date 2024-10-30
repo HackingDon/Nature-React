@@ -179,7 +179,7 @@ function start(index){
                 <img className="img2" src={fet.logo} alt=""/>
                 <h6 className="color fw-bold fs-2 mt-3">{fet.h}</h6>
                 <p className="text-secondary lh-base fw-light">Water covers two-thirds of the surface of the Earth, but fresh water is 0.002% on Earth. What will you children drink?</p>
-                <a className="link" href="#"><h6 className={fet.color}>{fet.label}</h6></a>
+                <a style={{textDecoration:'none'}} className="link" href="#"><h6 className={fet.color}>{fet.label}</h6></a>
               </div>
             </div>
           ))}
