@@ -46,7 +46,7 @@ const Join = () => {
           <div className="d-flex justify-content-center align-items-center h-100">
           <div className="w-65 color">
             <h1 className="fw-bold fs2 fn">You Have The Power Today to change Tomorrow!</h1>
-            <h4 className="mt-3 fw-semibold fst-italic">GAdvancing the study of environmental science</h4>
+            <h4 className="mt-3 fw-semibold fst-italic">Advancing the study of environmental science</h4>
             <p className="mt-4 fs-5 text-secondary">There are many ways to take small steps in changing your living habits while making big strides in helping the environment.</p>
             <div className="d-flex mt-5">
             <button className="btn btn-warning color rounded-pill btn-join fm">Learn More</button>

@@ -1,0 +1,115 @@
+.head-about{
+    height: 700px;
+    background-image: url(images/about1-1.jpg);
+    background-size: cover;
+}
+.head-about h1{
+    font-size: 70px;
+}
+.about-col{
+    height: 800px;
+    background-size: cover;
+}
+.fs3{
+    font-size: 50px;
+}
+.w-60{
+    width: 60%;
+}
+.profile{
+    height: 800px;
+    background-color: rgb(252, 246, 239);
+}
+.prof{
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+.prof-img{
+    position: absolute;
+    border-radius: 50%;
+}
+.prof-con{
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+}
+.prof-con:hover{
+    opacity: 1;
+}
+.prof-icon{
+    height: 15px;
+    width: 15px;
+}
+.fs4{
+    font-size: 18px;
+}
+.prof-name{
+    text-decoration: none;
+}
+.prof-name h2:hover{
+    color: rgb(255, 196, 0) !important;
+}
+.fourth-about{
+    position: relative;
+    height: 670px;
+}
+.fourth-about img,
+.fourth-about div,
+.final-con{
+    position: absolute;
+}
+.fourth-about div{
+    top: 30%;
+    left: 20%;
+    width: 30%;
+}
+.fourth-about div p{
+    color: rgb(209, 199, 198);
+    font-size: 18px;
+}
+.slider-about{
+    height: 800px;
+}
+.slider-about div{
+    flex-wrap: nowrap;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+.card-img-top{
+    border-radius: none;
+}
+.about {
+    height: 270px !important;
+    overflow: hidden;
+}
+.slider-about div button{
+    height: 10px;
+    width: 10px;
+    padding: 5px !important;
+}
+.fs5{
+    font-size: 60px;
+}
+.final-about{
+    background-image: url(images/about7.jpg);
+    height: 700px;
+    background-size: cover;
+}
+.final-about div{
+    position: relative;
+}
+.final-con{
+    left: 25%;
+}
+.final-con h1{
+    word-spacing: -10px;
+}
+.bg-trans:hover{
+    background: transparent !important;
+}
+.contact{
+    height: 150px;
+    background-color: #B69F54;
+}

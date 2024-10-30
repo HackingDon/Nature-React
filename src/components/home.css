@@ -48,6 +48,10 @@ h1,h2,h3,h4,h5,h6{
 .second-sec{
     height: 600px;
 }
+.home{
+  overflow: hidden;
+  height: 225px !important;
+}
 .slider {
   position: relative;
   height: 900px;

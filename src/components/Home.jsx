@@ -209,7 +209,7 @@ function start(index){
          {card.map((c)=>(
            <div className="col-xxl-4 col-md-6" >
            <div className="card">
-             <img src={c.img} className="card-img-top" alt="..."/>
+             <div className="home"><img src={c.img} className="card-img-top" alt="..."/></div>
              <div className="card-body">
                <p className="card-title fs-5 color fw-bold mt-2 fm">{c.p}</p>
                <div className="d-flex justify-content-between mt-3">

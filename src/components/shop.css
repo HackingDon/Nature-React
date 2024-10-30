@@ -59,7 +59,7 @@ option{
     overflow: hidden;
     height: 300px;
 }
-.card-img-top{
+.card-image{
     position: absolute;
     height: 100%;
 }

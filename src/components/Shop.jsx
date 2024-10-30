@@ -130,7 +130,7 @@ const para = document.querySelectorAll("#para");
                   <div className="card mt-5" onMouseEnter={()=>enter(index)} onMouseLeave={()=>leave(index)}>
                     <div className="card-img">
                     <img
-                      className="card-img-top"
+                      className="card-img-top card-image"
                       src={card.src}
                       alt="Card image cap"
                     />
