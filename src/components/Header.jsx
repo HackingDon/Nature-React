@@ -42,16 +42,16 @@ useEffect(() => {
               </button>
               <div className="collapse navbar-collapse" id="mynavbar">
                 <ul className="navbar-nav ms-auto ">
-                 <li className="nav-item ms-3">
+                 <li className="nav-item mt-1 ms-3">
                   <Link to='/'>Home</Link>
                  </li>
-                 <li className="nav-item ms-3">
+                 <li className="nav-item mt-1 ms-3">
                   <Link to='/shop'>Shop</Link>
                  </li>
-                 <li className="nav-item ms-3">
+                 <li className="nav-item mt-1 ms-3">
                   <Link to='/join'>Join Us</Link>
                  </li>
-                 <li className="nav-item ms-3">
+                 <li className="nav-item mt-1 ms-3">
                   <Link to='/about'>AboutUs</Link>
                  </li>
                   <li className="nav-item ms-3">
