@@ -2,6 +2,7 @@ import React from 'react'
 import './join.css'
 import Header from './Header';
 import Footer from './Footer';
+import { Link } from "react-router-dom";
 
 const Join = () => {
   return (
@@ -33,8 +34,8 @@ const Join = () => {
             <h4 className="mt-3 fw-semibold fst-italic">Green. That's how we'd like the world to be</h4>
             <p className="mt-4 fs-5 text-secondary">There are many ways to take small steps in changing your living habits while making big strides in helping the environment.</p>
             <div className="d-flex mt-5">
-            <button className="btn btn-warning color rounded-pill btn-join fm">Join Us</button>
-            <button className="btn color btn-find fn">Find Out More</button>
+            <Link to='/contact'><button className="btn btn-warning color rounded-pill btn-join fm">Join Us</button></Link>
+            <Link to='/about' className='mt-2'><button className="btn color btn-find fn">Find Out More</button></Link>
             </div>
             </div>
           </div></div>
@@ -49,8 +50,8 @@ const Join = () => {
             <h4 className="mt-3 fw-semibold fst-italic">Advancing the study of environmental science</h4>
             <p className="mt-4 fs-5 text-secondary">There are many ways to take small steps in changing your living habits while making big strides in helping the environment.</p>
             <div className="d-flex mt-5">
-            <button className="btn btn-warning color rounded-pill btn-join fm">Learn More</button>
-            <button className="btn color btn-find fn">Find Out More</button>
+            <Link to='/about'><button className="btn btn-warning color rounded-pill btn-join fm">Learn More</button></Link>
+            <Link to='/about' className='mt-2'><button className="btn color btn-find fn">Find Out More</button></Link>
             </div>
             </div>
           </div></div>
@@ -63,8 +64,8 @@ const Join = () => {
             <h4 className="mt-3 fw-semibold fst-italic">Green. That's how we'd like the world to be</h4>
             <p className="mt-4 fs-5 text-secondary">There are many ways to take small steps in changing your living habits while making big strides in helping the environment.</p>
             <div className="d-flex mt-5">
-            <button className="btn btn-warning color rounded-pill btn-join fm">Join Us</button>
-            <button className="btn color btn-find fn">Find Out More</button>
+            <Link to='/contact'><button className="btn btn-warning color rounded-pill btn-join fm">Join Us</button></Link>
+            <Link to='/about' className='mt-2'><button className="btn color btn-find fn">Find Out More</button></Link>
             </div>
             </div>
           </div></div>

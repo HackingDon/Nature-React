@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
+import { Link } from "react-router-dom";
 import "./about.css";
 const About = () => {
   const rows = [
@@ -111,11 +112,7 @@ useEffect(()=>{
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="w-75 text-white">
                   <h1 className="fw-bold fn">{row.img_h}</h1>
-                  <img
-                    className={row.png != "" ? "mt-5" : ""}
-                    src={row.png}
-                    alt=""
-                  />
+                  <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw" target="blank"><img className={row.png != "" ? "mt-5" : ""} src={row.png} alt=""/></a>
                   <p className="mt-4">
                     Water covers two-thirds of the surface of the Earth, but
                     Fresh water is 0.002% on Earth. What will your children
@@ -256,8 +253,8 @@ useEffect(()=>{
             Join the race to make the world a better place
             </p>
             <div className="d-flex mt-5 gap-3">
-            <button className="btn btn-warning bg-trans ps-5 pe-5 color rounded-pill btn-join fm">Join Us Now</button>
-            <button className="btn color btn-find fn">Find Out More</button>
+            <Link to='/contact'><button className="btn btn-warning bg-trans ps-5 pe-5 color rounded-pill btn-join fm">Join Us Now</button></Link>
+            <Link to='/about'><button className="btn color btn-find fn">Find Out More</button></Link>
             </div>
             </div>
           </div>
