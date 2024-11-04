@@ -267,5 +267,4 @@ useEffect(()=>{
     </div>
   );
 };
-
 export default About;

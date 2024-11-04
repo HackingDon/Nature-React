@@ -131,16 +131,14 @@ const para = document.querySelectorAll("#para");
                     <img
                       className="card-img-top card-image"
                       src={card.src}
-                      alt="Card image cap"
-                    />
+                      alt="Card image cap"/>
                     <div className={card.available!=''?"card-img-label":""}>{card.available}</div>
                     </div>
                     <div className="card-body text-center">
                       <h5 className="card-title fw-bold color">{card.title}</h5>
                       <span
                         className="fw-bold fs-5 card-label"
-                        style={{ color: "#EFC94C" }}
-                      >
+                        style={{ color: "#EFC94C" }}>
                         {card.label}
                       </span>
                       <p id="para" className="card-text fw-bold mt-3 color">
@@ -180,21 +178,16 @@ const para = document.querySelectorAll("#para");
               </div>
               <h3 className="fw-500 mt-5">Products</h3>
               <ul className="mt-4 p-0">
-                {prods.map((card)=>
-                    (
+                {prods.map((card)=>(
                       <li className="d-flex gap-3 mt-3">
                     <img src={card.src} className="product-img" />
                     <div className="d-block color">
                       <p className="fw-500">{card.title}</p>
-                      <p>
-                          <del>{card.del}</del> ${card.price}.00
-                        </p>
+                      <p><del>{card.del}</del> ${card.price}.00</p>
                     </div>
                   </li>
-                    )
-                )}
+                    ))}
                 </ul>
-              
           </div>
         </div>
       </div>
@@ -202,5 +195,4 @@ const para = document.querySelectorAll("#para");
     </div>
   );
 };
-
 export default Shop;

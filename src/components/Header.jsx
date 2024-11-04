@@ -2,13 +2,12 @@ import React, { useState,useEffect,useRef } from "react"
 import { Link } from "react-router-dom";
 
 const Header = () => {
-    const [bgColor, setBgColor] = useState('fixed-top'); 
+const [bgColor, setBgColor] = useState('fixed-top'); 
 const [border,setBorder] = useState("container border-bottom border-dark-subtile pt-5 pb-5")
 const componentRef = useRef(null);
 useEffect(() => {
   componentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }, []);
-
 useEffect(() => {
   const handleScroll = () => {
     const scrollY = window.scrollY; 
@@ -21,7 +20,6 @@ useEffect(() => {
       setBorder("container pt-3 pb-5")
     }
   };
-
   window.addEventListener('scroll', handleScroll); 
   return () => {
     window.removeEventListener('scroll', handleScroll);
@@ -84,5 +82,4 @@ useEffect(() => {
     </div>
   )
 }
-
 export default Header

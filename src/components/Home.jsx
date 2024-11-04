@@ -420,5 +420,4 @@ return()=>clearInterval(card)
     </div>
   );
 };
-
 export default Home;

@@ -5,10 +5,7 @@ import Shop from './components/Shop'
 import About from './components/About'
 import Contact from './components/Contact'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
-
 function App() {
-  
-
   return (<>
   <BrowserRouter>
   <Routes>
@@ -23,5 +20,4 @@ function App() {
   </>
   )
 }
-
 export default App
