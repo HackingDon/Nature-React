@@ -1,9 +1,13 @@
-import React, { useState,useEffect } from "react"
+import React, { useState,useEffect,useRef } from "react"
 import { Link } from "react-router-dom";
 
 const Header = () => {
     const [bgColor, setBgColor] = useState('fixed-top'); 
 const [border,setBorder] = useState("container border-bottom border-dark-subtile pt-5 pb-5")
+const componentRef = useRef(null);
+useEffect(() => {
+  componentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, []);
 
 useEffect(() => {
   const handleScroll = () => {
@@ -24,7 +28,7 @@ useEffect(() => {
   };
 }, []); 
   return (
-    <div>
+    <div ref={componentRef}>
       <div className={bgColor}>
           <nav className="navbar navbar-expand-lg pb-4">
             <div className={border}>
@@ -53,6 +57,9 @@ useEffect(() => {
                  </li>
                  <li className="nav-item mt-1 ms-3">
                   <Link to='/about'>AboutUs</Link>
+                 </li>
+                 <li className="nav-item mt-1 ms-3">
+                  <Link to='/contact'>Contact</Link>
                  </li>
                   <li className="nav-item ms-3">
                     <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search text-white mt-2 ms-2" viewBox="0 0 16 16">

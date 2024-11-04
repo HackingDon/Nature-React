@@ -1,6 +1,5 @@
 import React, { useState,useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./home.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -88,7 +87,6 @@ function cardSlide(side){
     })
     setFl(true)
   }
- 
 }
 useEffect(()=>{
   let card = setInterval(()=>{
@@ -99,7 +97,6 @@ useEffect(()=>{
       cardSlide('left')
     }
   },5000)
-
   return ()=> clearInterval(card)
 },[fl])
 const [j,setJ] =useState(0);
@@ -151,12 +148,12 @@ function start(index){
             <h1 className="fw-bolder fs1 fn">You Have The Power Today to change Tomorrow!</h1>
             <h4 className="mt-3 fw-semibold fst-italic">Green. That's how we'd like the world to be</h4>
             <p className="mt-4 text-secondary">There are many ways to take small steps in changing your living habits while making big strides in helping the environment.</p>
-            <div className="d-flex align-items-center justify-content-center row mt-5">
-              <div className="col-md-6 d-flex justify-content-center">
-                <img src="src/images/vid.png" className="vid" alt="" />
-              <p className="ms-3 mt-2 fw-semibold ">Watch Video</p>
+            <div className="d-flex align-items-center justify-content-start row mt-5">
+              <div className="col-md-6 d-flex justify-content-start">
+                <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw"><img src="src/images/vid.png" className="vid" alt="" /></a> 
+                <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw" className="btn color btn-find fn">Watch Video</a>
               </div>
-              <button className="btn btn-warning color fw-semibold rounded-pill p-3 ps-4 pe-4 col-md-4">FindOutMore</button>
+              <button className="btn btn-warning color btn-join fw-semibold rounded-pill p-3 col-md-3">FindOutMore</button>
             </div>
           </div>
         </div>

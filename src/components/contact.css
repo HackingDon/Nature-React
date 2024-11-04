@@ -1,0 +1,11 @@
+.head-contact{
+    height: 600px;
+    background-image: url(images/about1-1.jpg);
+    background-size: cover;
+}
+.contact-body{
+    height: 900px;
+}
+.contact-body input, .contact-body textarea{
+    background: transparent;
+}
