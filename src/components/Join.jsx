@@ -3,15 +3,13 @@ import './join.css'
 import Header from './Header';
 import Footer from './Footer';
 import { Link } from "react-router-dom";
+import Banner from './Banner';
 
 const Join = () => {
   return (
     <div>
      <Header />
-        <div className="head-join">
-          <img src="src/components/images/1-1.jpg" alt="" className="img-join" />
-          <h1 className='text-join fw-bold'>Join Us</h1>
-        </div>
+     <Banner src='src/components/images/1-1.jpg' head='Join Us' height='650px'/>
         <div className="row w-100 m-0">
           <div className="col-3 img-col-join1">
             <h2>Support a Campaign</h2>

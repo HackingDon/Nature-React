@@ -4,17 +4,16 @@ import Footer from "./Footer";
 import "./contact.css";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import Banner from "./Banner";
 
 const Contact = () => {
   const position = [34.083273, -118.359852];
   return (
     <div>
       <Header />
-      <div className="head-contact d-flex align-items-center justify-content-center pt-5">
-        <h1 className="fw-bold text-white fs5">Contacts</h1>
-      </div>
+      <Banner src='src/components/images/about1-1.jpg' head='Contact' height = '600px'/>
       <div className="row contact-body w-100 m-0">
-        <div className="col-7">
+        <div className="col-7 p-0">
             <div className="d-flex align-items-center flex-column justify-content-center h-100 w-100">
                 <div className="w-55">
                 <h2 className="color fw-bold">Want to talk? Let's do it!</h2>
@@ -30,7 +29,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
-        <div className="col-5">
+        <div className="col-5 p-0">
           <MapContainer
             center={position}
             zoom={13}

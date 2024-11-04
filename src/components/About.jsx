@@ -3,6 +3,7 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import { Link } from "react-router-dom";
 import "./about.css";
+import Banner from "./Banner.jsx";
 const About = () => {
   const rows = [
     {
@@ -99,16 +100,13 @@ useEffect(()=>{
   return (
     <div>
       <Header />
-      <div className="head-about d-flex align-items-center justify-content-center pt-5">
-        <h1 className="fw-bold text-white">About Us</h1>
-      </div>
+      <Banner src='src/components/images/about1-1.jpg' height = '700px' head='About Us'/>
       <div className="container-fluid body-about p-0">
         {rows.map((row) => (
           <div className="row w-100 p-0">
             <div
               className="col-4 about-col"
-              style={{ backgroundImage: `url(${row.src})` }}
-            >
+              style={{ backgroundImage: `url(${row.src})` }}>
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="w-75 text-white">
                   <h1 className="fw-bold fn">{row.img_h}</h1>

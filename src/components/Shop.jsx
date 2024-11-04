@@ -3,6 +3,7 @@ import "./shop.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import Banner from "./Banner";
 const Shop = () => {
   const cards = [
     {
@@ -105,12 +106,7 @@ const para = document.querySelectorAll("#para");
   return (
     <div>
       <Header />
-      <div className="head-shop d-flex align-items-center justify-content-center pt-5">
-        <div className="text-white pt-5">
-          <h1 className="fw-bold">Shop</h1>
-          <p className="mt-4 fw-semibold">Home / Shop</p>
-        </div>
-      </div>
+      <Banner head='Shop' src='src/components/images/shop-1.jpg' height='550px' p='Home/Shop' />
       <div className="container p-4">
         <div className="row w-100">
           <div className="col-9">
