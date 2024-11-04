@@ -1,5 +1,6 @@
 import React, { useState,useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 import "./home.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -125,6 +126,76 @@ function start(index){
   setJ(index)
   setFlag(true);
 }
+const cards = [{
+  src:"src/components/images/about6.jpg",
+  h:"Complete Depackaging and Composting Liquid",
+  label:"Information"
+},{
+  src:"src/components/images/about5.jpg",
+  h:"Podcast:Do Animals in the Wild Get Drunk?",
+  label:"Green Living"
+},{
+  src:"src/components/images/about1.jpg",
+  h:"The Summer of Resistance is Coming to a City Near You",
+  label:"Environment"
+},{
+  src:"src/components/images/about2.jpg",
+  h:"Hug a Tree,They have Less Issues than People",
+  label:"Green Living"
+},{
+  src:"src/components/images/about3.jpg",
+  h:"Huge Wildfire:Do You Hear the Trees Falling",
+  label:"Information"
+},{
+  src:"src/components/images/about4.jpg",
+  h:"8 Photos Take You Inside the Movement to Save the Amazon",
+  label:"Environment"
+}
+]
+const eight = [{
+  num:'92%',
+  lab:"of population",
+  p:"lives in places where air pollution exceeds safe limits"
+},{
+  num:'46%',
+  lab:"of the lakes in America",
+  p:"are extremely polluted and hence risky for swimming, fishing and aquatic life"
+},{
+  num:'100+',
+  lab:"pesticides",
+  p:"in any air, water or soil can cause birth defects, gene mutation and cancer"
+}]
+const slideRef = useRef(null);
+const slides = (val)=>{
+if(val=='right'){
+  slideRef.current.scrollTo({
+    left:slideRef.current.offsetWidth,
+    behaviour:'smooth'
+  })
+}
+else{
+  slideRef.current.scrollTo({
+    left:0,
+    behaviour:'smooth'
+  })
+}
+}
+useEffect(()=>{
+let card = setInterval(()=>{
+  if(slideRef.current.scrollLeft > 900){
+    slide('left')
+  }
+  else{
+    slideRef.current.scrollTo({
+      left:slideRef.current.scrollLeft+450,
+      behaviour:'smooth'
+    });
+    console.log(slideRef.current.scrollLeft)
+
+  }
+},5000)
+return()=>clearInterval(card)
+},[])
   return (
     <div>
       <Header />
@@ -150,10 +221,10 @@ function start(index){
             <p className="mt-4 text-secondary">There are many ways to take small steps in changing your living habits while making big strides in helping the environment.</p>
             <div className="d-flex align-items-center justify-content-start row mt-5">
               <div className="col-md-6 d-flex justify-content-start">
-                <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw"><img src="src/images/vid.png" className="vid" alt="" /></a> 
-                <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw" className="btn color btn-find fn">Watch Video</a>
+                <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw" target="blank"><img src="src/images/vid.png" className="vid"/></a> 
+                <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw" target="blank" className="btn color btn-find mt-2 fn">Watch Video</a>
+                <Link to='/about' className="col-md-3 ms-3"><button className="btn btn-warning color btn-join fw-semibold rounded-pill p-3">FindOutMore</button></Link>
               </div>
-              <button className="btn btn-warning color btn-join fw-semibold rounded-pill p-3 col-md-3">FindOutMore</button>
             </div>
           </div>
         </div>
@@ -191,7 +262,7 @@ function start(index){
             <div className="w-75 text-white">
               <h1 className="fw-bolder">Join the race to make the world a better place</h1>
               <p className="mt-4 fw-light ">Water covers two-thirds of the surface of the Earth, but fresh water is 0.002% on Earth. What will you children drink?</p>
-              <p className="mt-5 text-warning fw-semibold">Join Us</p>
+              <Link to='/join'><p className="mt-5 text-warning fs-5 fw-semibold">Join Us</p></Link>
               </div>
           </div>
         </div>
@@ -289,6 +360,62 @@ function start(index){
             </div>
           </div>
       </section>
+      <section className="eighth-sec d-flex align-items-center justify-content-center flex-column">
+         <div className="w-60">
+         <h3 className="text-center fw-500">110 million Americans live amongst such high levels of air pollution, the federal government considers it to be harmful to their health.</h3>
+         <div className="row m-0 w-100 mt-5">
+          {eight.map((com)=>(
+            <div className="col-4 text-center">
+            <p className="fs3 text-warning fw-bold fn mb-0">{com.num}</p>
+            <p className="fs-4 fw-500 mt-0">{com.lab}</p>
+            <p className="fs-5">{com.p}</p>
+          </div>
+          ))}
+         </div>
+         </div>
+      </section>
+      <div className="d-flex slider-about align-items-center justify-content-center flex-column w-100">
+          <h1 className="fs-1 color fw-bold">Latest News & Articles:</h1>
+          <div ref={slideRef} className="row mt-5 w-70">
+            {cards.map((card)=>(
+              <div className="col-4">
+              <div class="card">
+                <div className="about">
+                <img class="card-img-top h-100" title={card.h} src={card.src} alt="Card image cap" />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title fw-bold color">{card.h}</h5>
+                  <label className="text-warning fs4 fw-500">{card.label}</label>
+                  <p class="card-text text-secondary">
+                    Lorem ipsum dolar sit amet, consectetur adipiscing elit. Pellentesque fermentum massa vel enim feugiat gravida. Phasellus velit risus.
+                  </p>
+                </div>
+              </div>
+            </div>
+            ))}
+          </div>
+          <div className="d-flex w-100 align-items-center justify-content-center gap-3">
+            <button className="btn btn-secondary" onClick={()=>slides("left")}></button>
+            <button className="btn btn-secondary" onClick={()=>slides("right")}></button>
+          </div>
+        </div>
+        <div className="row w-100 final-about m-0 d-flex flex-column justify-content-center">
+          <div className="color w-100">
+            <div className="final-con w-25">
+            <h1 className="fs5 fw-bold">It's Cool to Be in Eco-school</h1>
+            <p className="fs-5 fw-500 mt-4 text-secondary">
+            Join the race to make the world a better place
+            </p>
+            <div className="d-flex mt-5 gap-3">
+            <Link to='/contact'><button className="btn btn-warning bg-trans ps-5 pe-5 color rounded-pill btn-join fm">Join Us Now</button></Link>
+            <Link to='/about'><button className="btn color btn-find fn">Find Out More</button></Link>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-100 d-flex w-100 align-items-center justify-content-center contact">
+            <p className="fs-3 fw-500 fst-italic text-white">For any inquiries call the hotline: +1(123)1234567</p>
+        </div>
       <Footer />
     </div>
   );

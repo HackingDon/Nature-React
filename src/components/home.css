@@ -6,6 +6,9 @@
   text-decoration: none;
   color: #ffffff;
 }
+a {
+  text-decoration: none !important;
+}
 .nav-item a:hover {
   text-decoration: underline;
   color: #ffff22;
@@ -250,6 +253,13 @@ ul{
 .pb-7{
   padding-bottom: 6%;
   padding-top: 4%;
+}
+.eighth-sec{
+  background-image: url(/src/images/6.jpg);
+  background-size: cover;
+  height: 600px;
+  color: white;
+  width: 100%;
 }
 .footer{
   background-color: antiquewhite;
