@@ -126,6 +126,40 @@ function start(index){
   setJ(index)
   setFlag(true);
 }
+const [pop,setPop] = useState(0);
+const [lak,setLak] = useState(0);
+const [val,setVal] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPop((prevCount) => {
+        if (prevCount < 92) {
+          return prevCount + 1;
+        } else {
+          return prevCount;
+        }
+      });
+      setTimeout(()=>{
+        setVal((prevCount) => {
+          if (prevCount < 100) {
+            return prevCount + 1;
+          } else {
+            clearInterval(interval);
+            return prevCount;
+          }
+        });
+      },700)
+      setTimeout(()=>{
+        setLak((prevCount) => {
+          if (prevCount < 46) {
+            return prevCount + 1;
+          } else {
+            return prevCount;
+          }
+        });
+      },500)
+    }, 10);
+    return () => clearInterval(interval);}
+    ,[pop])
 const cards = [{
   src:"src/components/images/about6.jpg",
   h:"Complete Depackaging and Composting Liquid",
@@ -152,19 +186,6 @@ const cards = [{
   label:"Environment"
 }
 ]
-const eight = [{
-  num:'92%',
-  lab:"of population",
-  p:"lives in places where air pollution exceeds safe limits"
-},{
-  num:'46%',
-  lab:"of the lakes in America",
-  p:"are extremely polluted and hence risky for swimming, fishing and aquatic life"
-},{
-  num:'100+',
-  lab:"pesticides",
-  p:"in any air, water or soil can cause birth defects, gene mutation and cancer"
-}]
 const slideRef = useRef(null);
 const slides = (val)=>{
 if(val=='right'){
@@ -183,7 +204,7 @@ else{
 useEffect(()=>{
 let card = setInterval(()=>{
   if(slideRef.current.scrollLeft > 900){
-    slide('left')
+    slides('left')
   }
   else{
     slideRef.current.scrollTo({
@@ -191,7 +212,6 @@ let card = setInterval(()=>{
       behaviour:'smooth'
     });
     console.log(slideRef.current.scrollLeft)
-
   }
 },5000)
 return()=>clearInterval(card)
@@ -361,16 +381,24 @@ return()=>clearInterval(card)
           </div>
       </section>
       <section className="eighth-sec d-flex align-items-center justify-content-center flex-column">
-         <div className="w-60">
-         <h3 className="text-center fw-500">110 million Americans live amongst such high levels of air pollution, the federal government considers it to be harmful to their health.</h3>
+         <div className="w-65">
+         <h3 className="text-center fw-bold fst-italic">110 million Americans live amongst such high levels of air pollution, the federal government considers it to be harmful to their health.</h3>
          <div className="row m-0 w-100 mt-5">
-          {eight.map((com)=>(
-            <div className="col-4 text-center">
-            <p className="fs3 text-warning fw-bold fn mb-0">{com.num}</p>
-            <p className="fs-4 fw-500 mt-0">{com.lab}</p>
-            <p className="fs-5">{com.p}</p>
+         <div className="col-4 text-center">
+            <p className="fs3 text-warning fw-bold fn mb-0">{pop}%</p>
+            <p className="fs-4 fw-500 mt-0">of population</p>
+            <p className="fs-5">lives in places where air pollution exceeds safe limits</p>
           </div>
-          ))}
+          <div className="col-4 text-center">
+            <p className="fs3 text-warning fw-bold fn mb-0">{lak}%</p>
+            <p className="fs-4 fw-500 mt-0">of the lakes in America</p>
+            <p className="fs-5">are extremely polluted and hence risky for swimming, fishing and aquatic life</p>
+          </div>
+          <div className="col-4 text-center">
+            <p className="fs3 text-warning fw-bold fn mb-0">{val}+</p>
+            <p className="fs-4 fw-500 mt-0">pesticides</p>
+            <p className="fs-5">in any air, water or soil can cause birth defects, gene mutation and cancer</p>
+          </div>
          </div>
          </div>
       </section>
