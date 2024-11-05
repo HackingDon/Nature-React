@@ -1,7 +1,7 @@
 import React, { useState,useEffect,useRef } from "react"
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
 const [bgColor, setBgColor] = useState('fixed-top'); 
 const [border,setBorder] = useState("container border-bottom border-dark-subtile pt-5 pb-5")
 const componentRef = useRef(null);
@@ -25,6 +25,22 @@ useEffect(() => {
     window.removeEventListener('scroll', handleScroll);
   };
 }, []); 
+const navbar = [{
+  head:'Home',
+  to:'/home'
+},{
+  head:'Shop',
+  to:'/shop'
+},{
+  head:'Join Us',
+  to:'/join'
+},{
+  head:'About Us',
+  to:'/about'
+},{
+  head:'Contacts',
+  to:'/contact'
+}]
   return (
     <div ref={componentRef}>
       <div className={bgColor}>
@@ -44,21 +60,14 @@ useEffect(() => {
               </button>
               <div className="collapse navbar-collapse" id="mynavbar">
                 <ul className="navbar-nav ms-auto ">
-                 <li className="nav-item mt-1 ms-3">
-                  <Link to='/'>Home</Link>
-                 </li>
-                 <li className="nav-item mt-1 ms-3">
-                  <Link to='/shop'>Shop</Link>
-                 </li>
-                 <li className="nav-item mt-1 ms-3">
-                  <Link to='/join'>Join Us</Link>
-                 </li>
-                 <li className="nav-item mt-1 ms-3">
-                  <Link to='/about'>AboutUs</Link>
-                 </li>
-                 <li className="nav-item mt-1 ms-3">
-                  <Link to='/contact'>Contact</Link>
-                 </li>
+                {navbar.map((item, index) => (
+                    <li 
+                        key={index}
+                        className={`nav-item mt-1 ms-3 ${props.value == index ? 'active' : ''}`}
+                    >
+                        <Link to={item.to} >{item.head}</Link>
+                    </li>
+                ))}
                   <li className="nav-item ms-3">
                     <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search text-white mt-2 ms-2" viewBox="0 0 16 16">
                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>

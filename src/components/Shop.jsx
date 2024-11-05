@@ -105,7 +105,7 @@ const para = document.querySelectorAll("#para");
   }
   return (
     <div>
-      <Header />
+      <Header value='1' />
       <Banner head='Shop' src='src/components/images/shop-1.jpg' height='550px' p='Home/Shop' />
       <div className="container p-4">
         <div className="row w-100">

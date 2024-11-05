@@ -8,7 +8,7 @@ import Banner from './Banner';
 const Join = () => {
   return (
     <div>
-     <Header />
+     <Header value='2' />
      <Banner src='src/components/images/1-1.jpg' head='Join Us' height='650px'/>
         <div className="row w-100 m-0">
           <div className="col-3 img-col-join1">

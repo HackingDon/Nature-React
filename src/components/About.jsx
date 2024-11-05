@@ -43,7 +43,7 @@ const About = () => {
   ];
   return (
     <div>
-      <Header />
+      <Header value='3' />
       <Banner src='src/components/images/about1-1.jpg' height = '700px' head='About Us'/>
       <div className="container-fluid body-about p-0">
         {rows.map((row,index) => (

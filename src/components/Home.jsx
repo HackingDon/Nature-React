@@ -204,7 +204,7 @@ const [val,setVal] = useState(0);
   },[isVisible3])
   return (
     <div>
-      <Header />
+      <Header value='0' />
         <div className="slider w-100">
           <img src={src} id="img" />
           <div className="slider-con">

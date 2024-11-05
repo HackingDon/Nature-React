@@ -10,7 +10,7 @@ const Contact = () => {
   const position = [34.083273, -118.359852];
   return (
     <div>
-      <Header />
+      <Header value = '4' />
       <Banner src='src/components/images/about1-1.jpg' head='Contact' height = '600px'/>
       <div className="row contact-body w-100 m-0">
         <div className="col-7 p-0">
