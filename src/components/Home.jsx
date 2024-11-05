@@ -2,13 +2,19 @@ import React, { useState,useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./home.css";
+import useIntersectionObserver from "./useIntersectionObserver";
 import Header from "./Header";
 import Footer from "./Footer";
 const Home = () => {
   const [src,setSrc] = useState("");
   const [head,setHead] = useState("");
   const [para,setPara] = useState("");
+  const [isVisible1, ref1] = useIntersectionObserver();
+  const [isVisible2, ref2] = useIntersectionObserver();
+  const [isVisible3, ref3] = useIntersectionObserver();
+  const [isVisible4, ref4] = useIntersectionObserver();
   const btns = [0,1,2,3];
+  const [percentage,setPercentage] = useState(0)
   const scroll = useRef(null)
   const slider = [{
     img:"src/images/slider-1.jpg",
@@ -72,6 +78,49 @@ const card = [{
   label:"$5800 to go",
   percent:"17%"
 }];
+const cards = [{
+  src:"src/components/images/about6.jpg",
+  h:"Complete Depackaging and Composting Liquid",
+  label:"Information"
+},{
+  src:"src/components/images/about5.jpg",
+  h:"Podcast:Do Animals in the Wild Get Drunk?",
+  label:"Green Living"
+},{
+  src:"src/components/images/about1.jpg",
+  h:"The Summer of Resistance is Coming to a City Near You",
+  label:"Environment"
+},{
+  src:"src/components/images/about2.jpg",
+  h:"Hug a Tree,They have Less Issues than People",
+  label:"Green Living"
+},{
+  src:"src/components/images/about3.jpg",
+  h:"Huge Wildfire:Do You Hear the Trees Falling",
+  label:"Information"
+},{
+  src:"src/components/images/about4.jpg",
+  h:"8 Photos Take You Inside the Movement to Save the Amazon",
+  label:"Environment"
+}
+]
+const images = [{
+  src:'src/images/1-puzzle.jpg',
+  h:'Fighting Global Warming',
+  p:'Climate'
+},{
+  src:'src/images/2-puzzle.jpg',
+  h:'Must Love Dogs',
+  p:'Rescue'
+},{
+  src:'src/images/4-puzzle.jpg',
+  h:'Protecting Our Oceans',
+  p:'Oceans'
+},{
+  src:'src/images/5-puzzle.jpg',
+  h:'6 Ways You Can Eat Better',
+  p:'Food'
+}]
 const [fl,setFl]= useState(true)
 function cardSlide(side){
   if(side == 'right'){
@@ -126,10 +175,26 @@ function start(index){
   setJ(index)
   setFlag(true);
 }
+  useEffect(()=>{
+    if (isVisible4 && percentage < 40) {
+      const interval = setInterval(() => {
+          setPercentage((prevCount) => {
+              if (prevCount < 40) {
+                  return prevCount + 1;
+              } else {
+                  clearInterval(interval);
+                  return prevCount;
+              }
+          });
+      }, 20);
+  return ()=> clearInterval(interval);
+    }
+},[isVisible4])
 const [pop,setPop] = useState(0);
 const [lak,setLak] = useState(0);
 const [val,setVal] = useState(0);
   useEffect(() => {
+   if(isVisible3){
     const interval = setInterval(() => {
       setPop((prevCount) => {
         if (prevCount < 92) {
@@ -140,14 +205,14 @@ const [val,setVal] = useState(0);
       });
       setTimeout(()=>{
         setVal((prevCount) => {
-          if (prevCount < 100) {
-            return prevCount + 1;
-          } else {
-            clearInterval(interval);
-            return prevCount;
-          }
-        });
-      },700)
+        if (prevCount < 100) {
+          return prevCount + 1;
+        } else {
+          clearInterval(interval);
+          return prevCount;
+        }
+      });
+      })
       setTimeout(()=>{
         setLak((prevCount) => {
           if (prevCount < 46) {
@@ -157,35 +222,10 @@ const [val,setVal] = useState(0);
           }
         });
       },500)
-    }, 10);
-    return () => clearInterval(interval);}
-    ,[pop])
-const cards = [{
-  src:"src/components/images/about6.jpg",
-  h:"Complete Depackaging and Composting Liquid",
-  label:"Information"
-},{
-  src:"src/components/images/about5.jpg",
-  h:"Podcast:Do Animals in the Wild Get Drunk?",
-  label:"Green Living"
-},{
-  src:"src/components/images/about1.jpg",
-  h:"The Summer of Resistance is Coming to a City Near You",
-  label:"Environment"
-},{
-  src:"src/components/images/about2.jpg",
-  h:"Hug a Tree,They have Less Issues than People",
-  label:"Green Living"
-},{
-  src:"src/components/images/about3.jpg",
-  h:"Huge Wildfire:Do You Hear the Trees Falling",
-  label:"Information"
-},{
-  src:"src/components/images/about4.jpg",
-  h:"8 Photos Take You Inside the Movement to Save the Amazon",
-  label:"Environment"
-}
-]
+    }, 20);
+    return () => clearInterval(interval);
+   }
+  },[isVisible3])
 const slideRef = useRef(null);
 const slides = (val)=>{
 if(val=='right'){
@@ -211,7 +251,6 @@ let card = setInterval(()=>{
       left:slideRef.current.scrollLeft+450,
       behaviour:'smooth'
     });
-    console.log(slideRef.current.scrollLeft)
   }
 },5000)
 return()=>clearInterval(card)
@@ -273,7 +312,7 @@ return()=>clearInterval(card)
           ))}
           </div>
     </section>
-    <section className="fourth-sec">
+    <section className="fourth-sec" ref={ref1} style={{opacity: isVisible1 ? 1 : 0,transition: "opacity 0.6s ease-out, transform 0.6s ease-out",transform: isVisible1 ? "translateX(0)" : "translateX(-500px)"}}>
     </section>
     <section className="fifth-sec row w-100">
     <div className="col-lg-4 p-0 m-0 h-100">
@@ -321,7 +360,7 @@ return()=>clearInterval(card)
         </div>
         </div>
     </section>
-    <section className="sixth-sec pt-5 pb-5 d-flex align-items-center justify-content-center w-100">
+    <section className="sixth-sec pt-5 pb-5 d-flex align-items-center justify-content-center w-100" ref={ref4}>
     <div className="row w-70 mt-5 mb-5">
           <img className="col-xxl-4 rounded-circle img-6" src="src/images/6-2.jpg" alt=""/>
           <div className="col-xxl-5 content-6 text-white">
@@ -332,10 +371,10 @@ return()=>clearInterval(card)
               Donate Now
             </button>
           </div>
-          <div className="container col-xxl-3   mt-5 text-center">
-            <div className="circular-progress">
+          <div className="container col-xxl-3 mt-5 text-center">
+            <div className="circular-progress" style={{background: `conic-gradient(rgb(247, 190, 5) calc(${percentage}%), #CC4D39 0)`}}>
               <span>
-                <p className="fs-1 fn fw-bold mb-0">40%</p>
+                <p className="fs-1 fn fw-bold mb-0">{percentage}%</p>
                 <p className="fs-6 ">Donated</p>
               </span>
             </div>
@@ -344,43 +383,25 @@ return()=>clearInterval(card)
     </section>
     <section className="seventh-sec row w-100 m-0 p-0">
         <div className="col-lg-6 h-100 m-0 p-0">
-          <div className="w-100 h-50 row m-0 p-0">
-              <div className="col-6 h-100 p-0 puzz-1" >
-                <div className="puzz-11 fm">
-                  <h3 className="fw-bold">Fighting Global Warming</h3>
-                  <p className="fst-italic">Climate</p>
-                </div>
-              </div>
-              <div className="col-6 h-100 p-0 puzz-2" >
-                <div className="puzz-11 fm">
-                  <h3 className="fw-bold">Must Love Dogs</h3>
-                  <p className="fst-italic">Rescue</p>
-                </div>
-              </div>
-          </div>
-          <div className="w-100 h-50 row m-0 p-0">
-              <div className="col-6 h-100 p-0 puzz-3">
-                <div className="puzz-11 fm">
-                  <h3 className="fw-bold">Protecting Our Oceans</h3>
-                  <p className="fst-italic">Oceans</p>
-                </div>
-              </div>
-              <div className="col-6 h-100 p-0 puzz-4">
-                <div className="puzz-11 fm">
-                  <h3 className="fw-bold">6 Ways You Can Eat Better</h3>
-                  <p className="fst-italic">Food</p>
-                </div>
-              </div>
+          <div className="w-100 h-100 row m-0 p-0">
+             {images.map((image,index)=>(
+               <div className="col-lg-6 h-50 p-0" ref={ref2} style={{opacity: isVisible2 ? 1 : 0,transition: `opacity ${index}s`,background:`url(${image.src})`}}>
+               <div className="puzz-11 fm">
+                 <h3 className="fw-bold">{image.h}</h3>
+                 <p className="fst-italic">{image.p}</p>
+               </div>
+             </div>
+             ))}
           </div>
         </div>
-          <div className="col-lg-6 h-100 p-0 puzz-5">
-            <div className="puzz-11 fm">
+          <div className="col-lg-6 h-100 p-0 puzz-5"ref={ref2} style={{opacity: isVisible2 ? 1 : 0,transition: "opacity 2s"}}>
+            <div className="puzz-11 fm" >
               <h3 className="fw-bold">Watch For Climate Action</h3>
               <p className="fst-italic">Save Earth</p>
             </div>
           </div>
       </section>
-      <section className="eighth-sec d-flex align-items-center justify-content-center flex-column">
+      <section className="eighth-sec d-flex align-items-center justify-content-center flex-column"ref={ref3} style={{opacity: isVisible3 ? 1 : 0,transition: "opacity 0.6s ease-out, transform 0.6s ease-out",}}>
          <div className="w-65">
          <h3 className="text-center fw-bold fst-italic">110 million Americans live amongst such high levels of air pollution, the federal government considers it to be harmful to their health.</h3>
          <div className="row m-0 w-100 mt-5">

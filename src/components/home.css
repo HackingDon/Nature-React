@@ -179,7 +179,6 @@ h1,h2,h3,h4,h5,h6{
   position: relative;
   width: 200px;
   height: 200px;
-  background: conic-gradient(rgb(247, 190, 5) calc(40%), #CC4D39 0);
   border-radius: 50%;
   display: flex;
   justify-content: center;
