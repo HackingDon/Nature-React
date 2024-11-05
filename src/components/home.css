@@ -3,18 +3,16 @@
   transition: all 0.3s ease-in;
 }
 .nav-item a{
-  color: #ffffff;
+  color: #c2c2c2;
 }
 a {
   text-decoration: none !important;
 }
 .nav-item a:hover{
-  border-bottom: 1px solid #ffff22;
-  color: #ffff22 !important;
+  color: #ffffff ;
 }
 .nav-item.active a {
-    color: #ffff22 !important;
-    border-bottom: 1px solid #ffff22;
+    color: #ffffff
 }
 h1,h2,h3,h4,h5,h6{
     font-family:"Merriweather", sans-serif;

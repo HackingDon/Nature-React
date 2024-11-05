@@ -63,7 +63,7 @@ const navbar = [{
                 {navbar.map((item, index) => (
                     <li 
                         key={index}
-                        className={`nav-item mt-1 ms-3 ${props.value == index ? 'active' : ''}`}
+                        className={`nav-item mt-1 ms-3 fw-bold ${props.value == index ? 'active' : ''}`}
                     >
                         <Link to={item.to} >{item.head}</Link>
                     </li>
