@@ -121,7 +121,7 @@ const para = document.querySelectorAll("#para");
             </select>
             <div className="row w-100">
               {cards.map((card,index) => (
-                <div className={card.price>=value1 && card.price<=value2 ? 'col-4':'d-none'}>
+                <div className={card.price>=value1 && card.price<=value2 ? 'col-4':'d-none'} key={index}>
                   <div className="card mt-5" onMouseEnter={()=>enter(index)} onMouseLeave={()=>leave(index)}>
                     <div className="card-img">
                     <img
@@ -147,8 +147,8 @@ const para = document.querySelectorAll("#para");
             </div>
           </div>
           <div className="col-3 p-0">
-            <div class="form-group p-2 rounded-5 has-search">
-              <input type="text" class="form-control" placeholder="Search" />
+            <div className="form-group p-2 rounded-5 has-search">
+              <input type="text" className="form-control" placeholder="Search" />
               <img
                 src="src/components/images/search.svg"
                 alt=""
@@ -174,8 +174,8 @@ const para = document.querySelectorAll("#para");
               </div>
               <h3 className="fw-500 mt-5">Products</h3>
               <ul className="mt-4 p-0">
-                {prods.map((card)=>(
-                      <li className="d-flex gap-3 mt-3">
+                {prods.map((card,index)=>(
+                      <li className="d-flex gap-3 mt-3" key={index}>
                     <img src={card.src} className="product-img" />
                     <div className="d-block color">
                       <p className="fw-500">{card.title}</p>

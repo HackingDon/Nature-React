@@ -102,8 +102,8 @@ useEffect(()=>{
       <Header />
       <Banner src='src/components/images/about1-1.jpg' height = '700px' head='About Us'/>
       <div className="container-fluid body-about p-0">
-        {rows.map((row) => (
-          <div className="row w-100 p-0">
+        {rows.map((row,index) => (
+          <div className="row w-100 p-0" key={index}>
             <div
               className="col-4 about-col"
               style={{ backgroundImage: `url(${row.src})` }}>
@@ -153,8 +153,8 @@ useEffect(()=>{
             <div className="w-70">
               <div className="row w-100 m-0">
                 <h1 className="fw-bold color text-center fn">Organizers</h1>
-                {prof.map((profile) => (
-                  <div className="col-4 mt-5 d-flex flex-column align-items-center">
+                {prof.map((profile,index) => (
+                  <div className="col-4 mt-5 d-flex flex-column align-items-center" key={index}>
                     <div className="prof">
                       <img className="prof-img" src={profile.src} alt="" />
                       <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-3 prof-con">
@@ -221,16 +221,16 @@ useEffect(()=>{
         <div className="d-flex slider-about align-items-center justify-content-center flex-column w-100">
           <h1 className="fs-1 color fw-bold">Latest News & Articles:</h1>
           <div ref={slideRef} className="row mt-5 w-70">
-            {cards.map((card)=>(
-              <div className="col-4">
-              <div class="card">
+            {cards.map((card,index)=>(
+              <div className="col-4" key={index}>
+              <div className="card">
                 <div className="about">
-                <img class="card-img-top h-100" title={card.h} src={card.src} alt="Card image cap" />
+                <img className="card-img-top h-100" title={card.h} src={card.src} alt="Card image cap" />
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title fw-bold color">{card.h}</h5>
+                <div className="card-body">
+                  <h5 className="card-title fw-bold color">{card.h}</h5>
                   <label className="text-warning fs4 fw-500">{card.label}</label>
-                  <p class="card-text text-secondary">
+                  <p className="card-text text-secondary">
                     Lorem ipsum dolar sit amet, consectetur adipiscing elit. Pellentesque fermentum massa vel enim feugiat gravida. Phasellus velit risus.
                   </p>
                 </div>

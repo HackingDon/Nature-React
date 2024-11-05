@@ -300,8 +300,8 @@ return()=>clearInterval(card)
     </section>
     <section className="Third-sec d-flex align-items-center justify-content-center">
           <div className="row w-75">
-          {feature.map((fet)=>(
-            <div className="col-xxl-3 col-md-6 mt-2">
+          {feature.map((fet,ind)=>(
+            <div className="col-xxl-3 col-md-6 mt-2" key={ind}>
               <div className="d-block w-75">
                 <img className="img2" src={fet.logo} alt=""/>
                 <h6 className="color fw-bold fs-2 mt-3">{fet.h}</h6>
@@ -333,8 +333,8 @@ return()=>clearInterval(card)
         </div>
         <div className="d-md-flex d-none flex-column w-80 align-items-start">
           <div ref={scroll} className="row slide1">
-         {card.map((c)=>(
-           <div className="col-xxl-4 col-md-6" >
+         {card.map((c,i)=>(
+           <div className="col-xxl-4 col-md-6" key={i}>
            <div className="card">
              <div className="home"><img src={c.img} className="card-img-top" alt="..."/></div>
              <div className="card-body">
@@ -385,7 +385,7 @@ return()=>clearInterval(card)
         <div className="col-lg-6 h-100 m-0 p-0">
           <div className="w-100 h-100 row m-0 p-0">
              {images.map((image,index)=>(
-               <div className="col-lg-6 h-50 p-0" ref={ref2} style={{opacity: isVisible2 ? 1 : 0,transition: `opacity ${index}s`,background:`url(${image.src})`}}>
+               <div className="col-lg-6 h-50 p-0" key={index} ref={ref2} style={{opacity: isVisible2 ? 1 : 0,transition: `opacity ${index}s`,background:`url(${image.src})`}}>
                <div className="puzz-11 fm">
                  <h3 className="fw-bold">{image.h}</h3>
                  <p className="fst-italic">{image.p}</p>
@@ -426,16 +426,16 @@ return()=>clearInterval(card)
       <div className="d-flex slider-about align-items-center justify-content-center flex-column w-100">
           <h1 className="fs-1 color fw-bold">Latest News & Articles:</h1>
           <div ref={slideRef} className="row mt-5 w-70">
-            {cards.map((card)=>(
-              <div className="col-4">
-              <div class="card">
+            {cards.map((card,index)=>(
+              <div className="col-4" key={index}>
+              <div className="card">
                 <div className="about">
-                <img class="card-img-top h-100" title={card.h} src={card.src} alt="Card image cap" />
+                <img className="card-img-top h-100" title={card.h} src={card.src} alt="Card image cap" />
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title fw-bold color">{card.h}</h5>
+                <div className="card-body">
+                  <h5 className="card-title fw-bold color">{card.h}</h5>
                   <label className="text-warning fs4 fw-500">{card.label}</label>
-                  <p class="card-text text-secondary">
+                  <p className="card-text text-secondary">
                     Lorem ipsum dolar sit amet, consectetur adipiscing elit. Pellentesque fermentum massa vel enim feugiat gravida. Phasellus velit risus.
                   </p>
                 </div>
