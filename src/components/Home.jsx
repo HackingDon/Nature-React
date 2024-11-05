@@ -5,6 +5,8 @@ import "./home.css";
 import useIntersectionObserver from "./useIntersectionObserver";
 import Header from "./Header";
 import Footer from "./Footer";
+import Cardslider from "./Cardslider";
+import Beforefooter from "./Beforefooter";
 const Home = () => {
   const [src,setSrc] = useState("");
   const [head,setHead] = useState("");
@@ -78,32 +80,6 @@ const card = [{
   label:"$5800 to go",
   percent:"17%"
 }];
-const cards = [{
-  src:"src/components/images/about6.jpg",
-  h:"Complete Depackaging and Composting Liquid",
-  label:"Information"
-},{
-  src:"src/components/images/about5.jpg",
-  h:"Podcast:Do Animals in the Wild Get Drunk?",
-  label:"Green Living"
-},{
-  src:"src/components/images/about1.jpg",
-  h:"The Summer of Resistance is Coming to a City Near You",
-  label:"Environment"
-},{
-  src:"src/components/images/about2.jpg",
-  h:"Hug a Tree,They have Less Issues than People",
-  label:"Green Living"
-},{
-  src:"src/components/images/about3.jpg",
-  h:"Huge Wildfire:Do You Hear the Trees Falling",
-  label:"Information"
-},{
-  src:"src/components/images/about4.jpg",
-  h:"8 Photos Take You Inside the Movement to Save the Amazon",
-  label:"Environment"
-}
-]
 const images = [{
   src:'src/images/1-puzzle.jpg',
   h:'Fighting Global Warming',
@@ -226,35 +202,6 @@ const [val,setVal] = useState(0);
     return () => clearInterval(interval);
    }
   },[isVisible3])
-const slideRef = useRef(null);
-const slides = (val)=>{
-if(val=='right'){
-  slideRef.current.scrollTo({
-    left:slideRef.current.offsetWidth,
-    behaviour:'smooth'
-  })
-}
-else{
-  slideRef.current.scrollTo({
-    left:0,
-    behaviour:'smooth'
-  })
-}
-}
-useEffect(()=>{
-let card = setInterval(()=>{
-  if(slideRef.current.scrollLeft > 900){
-    slides('left')
-  }
-  else{
-    slideRef.current.scrollTo({
-      left:slideRef.current.scrollLeft+450,
-      behaviour:'smooth'
-    });
-  }
-},5000)
-return()=>clearInterval(card)
-},[])
   return (
     <div>
       <Header />
@@ -423,48 +370,8 @@ return()=>clearInterval(card)
          </div>
          </div>
       </section>
-      <div className="d-flex slider-about align-items-center justify-content-center flex-column w-100">
-          <h1 className="fs-1 color fw-bold">Latest News & Articles:</h1>
-          <div ref={slideRef} className="row mt-5 w-70">
-            {cards.map((card,index)=>(
-              <div className="col-4" key={index}>
-              <div className="card">
-                <div className="about">
-                <img className="card-img-top h-100" title={card.h} src={card.src} alt="Card image cap" />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title fw-bold color">{card.h}</h5>
-                  <label className="text-warning fs4 fw-500">{card.label}</label>
-                  <p className="card-text text-secondary">
-                    Lorem ipsum dolar sit amet, consectetur adipiscing elit. Pellentesque fermentum massa vel enim feugiat gravida. Phasellus velit risus.
-                  </p>
-                </div>
-              </div>
-            </div>
-            ))}
-          </div>
-          <div className="d-flex w-100 align-items-center justify-content-center gap-3">
-            <button className="btn btn-secondary" onClick={()=>slides("left")}></button>
-            <button className="btn btn-secondary" onClick={()=>slides("right")}></button>
-          </div>
-        </div>
-        <div className="row w-100 final-about m-0 d-flex flex-column justify-content-center">
-          <div className="color w-100">
-            <div className="final-con w-25">
-            <h1 className="fs5 fw-bold">It's Cool to Be in Eco-school</h1>
-            <p className="fs-5 fw-500 mt-4 text-secondary">
-            Join the race to make the world a better place
-            </p>
-            <div className="d-flex mt-5 gap-3">
-            <Link to='/contact'><button className="btn btn-warning bg-trans ps-5 pe-5 color rounded-pill btn-join fm">Join Us Now</button></Link>
-            <Link to='/about'><button className="btn color btn-find fn">Find Out More</button></Link>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-100 d-flex w-100 align-items-center justify-content-center contact">
-            <p className="fs-3 fw-500 fst-italic text-white">For any inquiries call the hotline: +1(123)1234567</p>
-        </div>
+      <Cardslider/>
+      <Beforefooter/>
       <Footer />
     </div>
   );
