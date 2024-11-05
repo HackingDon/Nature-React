@@ -9,7 +9,7 @@ const Join = () => {
   return (
     <div>
      <Header value='2' />
-     <Banner src='src/components/images/1-1.jpg' head='Join Us' height='650px'/>
+     <Banner src='src/images/fourth.jpg' head='Join Us' height='650px'/>
         <div className="row w-100 m-0">
           <div className="col-3 img-col-join1">
             <h2>Support a Campaign</h2>
