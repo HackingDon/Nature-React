@@ -1,0 +1,9 @@
+.pop-in::placeholder{
+    color: #ffffff;
+    font-weight: 500;
+}
+.pop-in{
+    border-left: 2px solid #ffffff !important;
+    border-radius: 0px !important;
+    font-size: 30px;
+}

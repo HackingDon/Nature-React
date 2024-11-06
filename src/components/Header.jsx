@@ -1,9 +1,11 @@
 import React, { useState,useEffect,useRef } from "react"
 import { Link } from "react-router-dom";
+import Popup from "./Popup";
 
 const Header = (props) => {
 const [bgColor, setBgColor] = useState('fixed-top'); 
-const [border,setBorder] = useState("container border-bottom border-dark-subtile pt-5 pb-5")
+const [border,setBorder] = useState("container border-bottom border-dark-subtile pt-5 pb-5");
+const [pop,setPop] = useState(false)
 const componentRef = useRef(null);
 useEffect(() => {
   componentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -69,9 +71,9 @@ const navbar = [{
                     </li>
                 ))}
                   <li className="nav-item ms-3">
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search text-white mt-2 ms-2" viewBox="0 0 16 16">
+                    <button className="btn border-0 p-0" onClick={()=>setPop(true)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search text-white mt-2 ms-2" viewBox="0 0 16 16">
                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                    </svg></a>
+                    </svg></button>
                   </li>
                   <li className="nav-item">
                     <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart text-white mt-2 ms-3" viewBox="0 0 16 16">
@@ -86,7 +88,8 @@ const navbar = [{
                 </ul>
               </div>
             </div>
-          </nav>  
+          </nav> 
+          <Popup trigger = {pop} setTrigger = {setPop}/> 
         </div>
     </div>
   )
