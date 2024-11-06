@@ -38,6 +38,7 @@ option{
 .cat:hover{
     color: #1c313d;
     text-decoration: none;
+    cursor: pointer;
 }
 .filter{
     position: relative;

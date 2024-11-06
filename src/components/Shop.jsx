@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import "./shop.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import Banner from "./Banner";
 const Shop = () => {
-  const cards = [
+  const jsonData = [
     {
       src: "src/components/images/shop-6-580x580.jpg",
       title: "Backpack",
+      pop:6,
+      rating:6,
       label: "New",
       del: "",
       price: 15.00,
@@ -17,6 +19,8 @@ const Shop = () => {
     {
       src: "src/components/images/shop-3-580x580.jpg",
       title: "Bag",
+      pop:5,
+      rating:2,
       label: "Collection",
       del: "",
       price: 65.00,
@@ -25,6 +29,8 @@ const Shop = () => {
     {
       src: "src/components/images/shop-5-580x580.jpg",
       title: "Cap",
+      pop:3,
+      rating:5,
       label: "Goods",
       del: "",
       price: 25.00,
@@ -33,6 +39,8 @@ const Shop = () => {
     {
       src: "src/components/images/shop-1-580x580.jpg",
       title: "Cup(Green Planet)",
+      pop:1,
+      rating:1,
       label: "Goods",
       del: "$20.00",
       price: 16.00,
@@ -41,6 +49,8 @@ const Shop = () => {
     {
       src: "src/components/images/shop-2-580x580.jpg",
       title: "Notebook",
+      pop:4,
+      rating:3,
       label: "New",
       del: "$20.00",
       price: 15.00,
@@ -49,38 +59,18 @@ const Shop = () => {
     {
       src: "src/components/images/shop-4-580x580.jpg",
       title: "T-shirt",
+      pop:2,
+      rating:4,
       label: "Collection",
       del: "",
       price: 20.00,
       available:"Out of stock"
     }  
   ];
-  const prods = [
-    {
-      src: "src/components/images/shop-1-580x580.jpg",
-      title: "Cup(Green Planet)",
-      label: "Goods",
-      del: "$20.00",
-      price: 16.00,
-      available:"Sale"
-    },
-    {
-      src: "src/components/images/shop-4-580x580.jpg",
-      title: "T-shirt",
-      label: "Collection",
-      del: "",
-      price: 20.00,
-      available:"Out of stock"
-    },
-    {
-      src: "src/components/images/shop-5-580x580.jpg",
-      title: "Cap",
-      label: "Goods",
-      del: "",
-      price: 25.00,
-      available:""
-    }
-  ]
+  const [message,setMessage] = useState('')
+  const inputRef = useRef(null)
+  const selectrRef = useRef(null)
+  const [cards,setCards] = useState(jsonData)
   const [value1,setValue1] = useState(10);
   const [value2,setValue2] = useState(70);
   const handleChange1 = (event)=>{setValue1(event.target.value)}
@@ -103,6 +93,64 @@ const Shop = () => {
 const para = document.querySelectorAll("#para");
     para[index].innerHTML = `<del>${cards[index].del}</del> $${cards[index].price}.00`
   }
+  function sortData(val){
+    const data = [...cards].sort((a,b)=>{
+      if(val == 'L2H'){
+        return a.price - b.price
+      }
+      else if(val == 'H2L'){
+        return b.price - a.price
+      }
+      else if(val == 'popularity'){
+        return a.pop - b.pop
+      }
+      else if(val == 'rating'){
+        return a.rating - b.rating
+      }
+    })
+    setCards(data)
+  }
+  function handleClick(){
+    let val = selectrRef.current.value
+   if(val == 'default'){
+    return setCards(jsonData)
+   }
+   else{
+    sortData(val)
+   }
+  }
+  function filler(e){
+    e.preventDefault();
+    let value = inputRef.current.value
+    if(value == ''){
+      setMessage("*Please Fill")  
+    }
+    else{
+    let data = jsonData.filter((item)=>item.title.toLowerCase() == value.toLowerCase())
+    if(data == ''){
+      setMessage("*Item not found");
+      setCards([]);
+    }
+    else{
+      setMessage('')
+      setCards(data);
+      
+    }}
+  }
+  function handleFilter(value){
+    let data = jsonData.filter((item)=>item.label.includes(value))
+    if(value == 'Reload'){
+      setMessage('')  
+      setCards(jsonData)
+
+    }
+    else{
+      setMessage('')
+      setCards(data);
+      
+    }
+   
+  }
   return (
     <div>
       <Header value='1' />
@@ -111,13 +159,13 @@ const para = document.querySelectorAll("#para");
         <div className="row w-100">
           <div className="col-9">
             <h1 className="fw-bold">Shop</h1>
-            <select type="text" className="form-select w-25 mt-4 rounded-5 p-2">
-              <option>Default sorting</option>
-              <option>Sort by popularity</option>
-              <option>Sort by average rating</option>
-              <option>Sort by latest</option>
-              <option>Sort by price:Low to High</option>
-              <option>Sort by price:High to Low</option>
+            <select ref={selectrRef} type="text" className="form-select w-25 mt-4 rounded-5 p-2" onChange={handleClick}>
+              <option value='default'>Default sorting</option>
+              <option value='popularity'>Sort by popularity</option>
+              <option value='rating'>Sort by average rating</option>
+              <option value='default'>Sort by latest</option>
+              <option value='L2H'>Sort by price:Low to High</option>
+              <option value='H2L'>Sort by price:High to Low</option>
             </select>
             <div className="row w-100">
               {cards.map((card,index) => (
@@ -147,20 +195,22 @@ const para = document.querySelectorAll("#para");
             </div>
           </div>
           <div className="col-3 p-0">
-            <div className="form-group p-2 rounded-5 has-search">
-              <input type="text" className="form-control" placeholder="Search" />
+            <form className="form-group p-2 rounded-5 has-search" onSubmit={filler}>
+              <input type="text" className="form-control" ref={inputRef} placeholder="Search" />
               <img
                 src="src/components/images/search.svg"
                 alt=""
                 className="input-search me-2 "
+                onClick={filler}
               />
-            </div>
+            </form>
+            <p className="text-danger fs-6">{message}</p>
             <h3 className="color mt-5 fw-bold">Product Categories</h3>
             <ul className="p-0">
-              <li className="fw-bold mt-3"><Link className="cat">Collection</Link></li>
-              <li className="fw-bold mt-2"><Link className="cat">Goods</Link></li>
-              <li className="fw-bold mt-2"><Link className="cat">New</Link></li>
-              <li className="fw-bold mt-2"><Link className="cat">Uncategorized</Link></li>
+              <li className="fw-bold mt-3" onClick={()=>handleFilter("Collection")}><a className="cat">Collection</a></li>
+              <li className="fw-bold mt-2" onClick={()=>handleFilter("Goods")}><a className="cat">Goods</a></li>
+              <li className="fw-bold mt-2" onClick={()=>handleFilter("New")}><a className="cat">New</a></li>
+              <li className="fw-bold mt-2" onClick={()=>handleFilter("Reload")}><a className="cat">Reload</a></li>
             </ul>
               <div>
               <h3 className="color fw-bold">Filter by price</h3>
@@ -174,8 +224,8 @@ const para = document.querySelectorAll("#para");
               </div>
               <h3 className="fw-500 mt-5">Products</h3>
               <ul className="mt-4 p-0">
-                {prods.map((card,index)=>(
-                      <li className="d-flex gap-3 mt-3" key={index}>
+                {jsonData.map((card,index)=>(
+                      <li className={index<4 && card.available != 'Out of stock '?"d-flex gap-3 mt-3":'d-none'} key={index}>
                     <img src={card.src} className="product-img" />
                     <div className="d-block color">
                       <p className="fw-500">{card.title}</p>
