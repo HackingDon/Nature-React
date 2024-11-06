@@ -11,7 +11,7 @@ const Contact = () => {
   return (
     <div>
       <Header value = '4' />
-      <Banner src='src/components/images/about1-1.jpg' head='Contact' height = '600px'/>
+      <Banner src='src/images/slider-1.jpg' head='Contact' height = '600px'/>
       <div className="row contact-body w-100 m-0">
         <div className="col-7 p-0">
             <div className="d-flex align-items-center flex-column justify-content-center h-100 w-100">
