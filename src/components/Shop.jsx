@@ -14,7 +14,8 @@ const Shop = () => {
       label: "New",
       del: "",
       price: 15.00,
-      available:"Out of stock"
+      available:"Out of stock",
+      quantity:1
     },
     {
       src: "src/components/images/shop-3-580x580.jpg",
@@ -24,7 +25,8 @@ const Shop = () => {
       label: "Collection",
       del: "",
       price: 65.00,
-      available:""
+      available:"",
+      quantity:1
     },
     {
       src: "src/components/images/shop-5-580x580.jpg",
@@ -34,7 +36,8 @@ const Shop = () => {
       label: "Goods",
       del: "",
       price: 25.00,
-      available:""
+      available:"",
+      quantity:1
     },
     {
       src: "src/components/images/shop-1-580x580.jpg",
@@ -44,7 +47,8 @@ const Shop = () => {
       label: "Goods",
       del: "$20.00",
       price: 16.00,
-      available:"Sale"
+      available:"Sale",
+      quantity:1
     },
     {
       src: "src/components/images/shop-2-580x580.jpg",
@@ -54,7 +58,8 @@ const Shop = () => {
       label: "New",
       del: "$20.00",
       price: 15.00,
-      available:"Sale"
+      available:"Sale",
+      quantity:1
     },
     {
       src: "src/components/images/shop-4-580x580.jpg",
@@ -64,7 +69,8 @@ const Shop = () => {
       label: "Collection",
       del: "",
       price: 20.00,
-      available:"Out of stock"
+      available:"Out of stock",
+      quantity:1
     }  
   ];
   const [message,setMessage] = useState('')
@@ -92,7 +98,7 @@ const Shop = () => {
     }
   }
   function addCart(index){
-    cart == []?setCart(cards[index]):setCart([...cart,cards[index]])
+    cards[index].available!='Out of stock'?cart == []?setCart(cards[index]):!cart.includes(cards[index])?setCart([...cart,cards[index]]):'':''
   }
   useEffect(() => {
     localStorage.setItem('data', JSON.stringify(cart));
