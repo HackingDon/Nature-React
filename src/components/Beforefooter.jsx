@@ -19,7 +19,7 @@ const Beforefooter = () => {
           </div>
         </div>
         <div className="w-100 d-flex w-100 align-items-center justify-content-center contact">
-            <p className="fs-3 fw-500 fst-italic text-white">For any inquiries call the hotline: +1(123)1234567</p>
+            <p className="fs-3 fw-500 fst-italic text-white fn">For any inquiries call the hotline: +1(123)1234567</p>
         </div>
     </div>
   )

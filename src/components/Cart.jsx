@@ -41,7 +41,7 @@ const Cart = () => {
             <img src={data.src} alt="" />
             <div className="d-flex align-items-center justify-content-around ps-5 w-100 h-100">
                 <h2>{data.title}</h2>
-                <h3>Price : ${data.price*data.quantity}.00</h3>
+                <h3 className='fm'>Price : ${data.price*data.quantity}.00</h3>
                 <div className="d-flex align-items-center gap-3">
                     <button className="btn btn-outline-danger" onClick={()=>count('minus',index)}>-</button>
                     <p className='fs-5 mt-3'>Quantity:{data.quantity}</p>
@@ -56,7 +56,7 @@ const Cart = () => {
         </li>
         )}
         <li className='d-flex w-100 mt-5 justify-content-end align-items-center gap-4'>
-            <h4>Total Price: ${total}.00</h4>
+            <h4 className='fm'>Total Price: ${total}.00</h4>
             <button className="btn btn-outline-success fs-5 rounded-4">Buy Now</button>
         </li>
       </ul>
