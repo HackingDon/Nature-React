@@ -79,7 +79,7 @@ option{
     text-decoration: none;
     color: #254151;
 }
-.card-text a:hover{
+.card-text:hover{
     color:rgb(255, 187, 0) ;
     
 }

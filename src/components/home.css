@@ -34,6 +34,15 @@ h1,h2,h3,h4,h5,h6{
 .color{
     color: #254151;
 }
+.dropdown-toggle::after {
+  display: none;
+}
+.dropdown-toggle{
+  border: none;
+}
+.dropdown-item:hover{
+  background-color: #000 !important;
+}
 .bgc{
     background-color: #254151;
     height: 100px !important;
