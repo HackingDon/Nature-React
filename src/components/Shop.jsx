@@ -73,21 +73,32 @@ const Shop = () => {
       quantity:1
     }  
   ];
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(70);
+  const input1ref = useRef(null);
+  const input2ref = useRef(null);
+  const [style,setStyle] = useState({});
   const [message,setMessage] = useState('')
   const object = JSON.parse(localStorage.getItem('data'))
   const [cart,setCart] = useState(object||[])
   const inputRef = useRef(null)
   const selectrRef = useRef(null)
   const [cards,setCards] = useState(jsonData)
-  const [value1,setValue1] = useState(10);
-  const [value2,setValue2] = useState(70);
-  const handleChange1 = (event)=>{setValue1(event.target.value)}
-  const handleChange2 = (event)=>setValue2(event.target.value)
-  const check = ()=>{
-    if(value1 > value2){
-      setValue2(value1)
-    }
-  }
+  const handleMinChange = () => {
+    const value = Math.min(Number(input1ref.current.value), maxValue-10);
+    setMinValue(value);
+  };
+
+  const handleMaxChange = () => {
+    const value = Math.max(Number(input2ref.current.value), minValue+10);
+    setMaxValue(value);
+  };
+  useEffect(()=>{
+    setStyle({
+        left: `${((minValue)/70)*100}%`,
+        width:`${((maxValue-minValue)/70)*100}%`
+    })
+  },[minValue,maxValue])
   function enter(index){
     const para = document.querySelectorAll("#para");
     if(cards[index].available == "Out of stock"){
@@ -156,8 +167,8 @@ const para = document.querySelectorAll("#para");
     if(value == 'Reload'){
       setMessage('')  
       setCards(jsonData)
-      setValue1(10)
-      setValue2(70)
+      setMinValue(0)
+      setMaxValue(70)
     }
     else{
       setMessage('')
@@ -184,15 +195,15 @@ const para = document.querySelectorAll("#para");
               <option value='H2L'>Sort by price:High to Low</option>
             </select>
             <button className="btn border-0"onClick={()=>handleFilter("Reload")}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+            <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
             <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
             </svg>
             </button>
            </div>
             <div className="row w-100">
               {cards.map((card,index) => (
-                <div className={card.price>=value1 && card.price<=value2 ? 'col-4':'d-none'} key={index}>
+                <div className={card.price>=minValue && card.price<=maxValue ? 'col-4':'d-none'} key={index}>
                   <div className="card mt-5" onMouseEnter={()=>enter(index)} onMouseLeave={()=>leave(index)}>
                     <div className="card-img">
                     <img
@@ -234,17 +245,18 @@ const para = document.querySelectorAll("#para");
               <li className="fw-bold mt-2" onClick={()=>handleFilter("Goods")}><a className="cat">Goods</a></li>
               <li className="fw-bold mt-2" onClick={()=>handleFilter("New")}><a className="cat">New</a></li>
             </ul>
-              <div>
+              <div className="postion-relative">
               <h3 className="color fw-bold">Filter by price</h3>
-              <div className="filter" onClick={check}>
-                <input type="range" min="10" max="70" step="10" value={value1} className="range" onChange={handleChange1} />
-                <input type="range" min="10" max="70" step="10" value={value2} className="range left-2" onChange={handleChange2} />
-              </div>
-              </div>
-              <div className="d-flex mt-5 w-100 justify-content-between">
-                <label className="mt-3 fw-bold color fs-5">Price : ${value1} - ${value2}</label>
-              </div>
-              <h3 className="fw-500 mt-5">Products</h3>
+              <div className="double-range-slider mt-3">
+                  <input ref={input1ref} type="range" step='5' min="0" max="70" value={minValue} onChange={handleMinChange} className="slider1"/>
+                  <input ref={input2ref} type="range" step='5' min="0" max="70" value={maxValue} onChange={handleMaxChange} className="slider1"/>
+                  <div className="slider-track">
+                    <div className="slider-range" style={style}/></div>
+                    <div className="position-absolute d-flex mt-4">
+                       <span className="fs-5 fm fw-bold">Price:${minValue}-${maxValue}</span>
+                    </div>
+                  </div>
+              <h3 className="fw-500 mt-5 pt-5 position-relative">Products</h3>
               <ul className="mt-4 p-0">
                 {jsonData.map((card,index)=>(
                       <li className={index<4 && card.available != 'Out of stock'?"d-flex gap-3 mt-3":'d-none'} key={index}>
@@ -257,6 +269,7 @@ const para = document.querySelectorAll("#para");
                     ))}
                 </ul>
                 <Link to='/cart' state={cart}><button className="btn btn-outline-dark mt-5 ms-5 fs-4">CheckOut ({cart.length})</button></Link>
+                </div>
           </div>
         </div>
       </div>
