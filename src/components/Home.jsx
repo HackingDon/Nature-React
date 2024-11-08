@@ -309,7 +309,7 @@ const [val,setVal] = useState(0);
     </section>
     <section className="sixth-sec pt-5 pb-5 d-flex align-items-center justify-content-center w-100" ref={ref4}>
     <div className="row w-70 mt-5 mb-5">
-          <img className="col-xxl-4 rounded-circle img-6" src="src/images/6-2.jpg" alt=""/>
+          <div className="img-con col-xxl-4 p-0"><img className="img-6" src="src/images/6-2.jpg" alt=""/></div>
           <div className="col-xxl-5 content-6 text-white">
             <p className="text-warning mt-1 fn fw-semibold">$6500 to go</p>
             <h2 className="fn fw-bold ">Don't Be Mean, Think Green!</h2>
