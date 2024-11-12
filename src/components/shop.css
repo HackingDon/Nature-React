@@ -63,7 +63,17 @@ option{
     cursor: pointer;
     -webkit-appearance: none;
   }
-  
+  .rt:active{
+    animation: rotate 0.3s linear;
+  }
+  @keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(180deg);
+    }
+  }
   .slider-track {
     position: absolute;
     top: 0;

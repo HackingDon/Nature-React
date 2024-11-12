@@ -1,0 +1,21 @@
+.verify{
+    background-color: grey;
+    height: 5px;
+    position: relative;
+}
+.verify::before{
+    content: '';
+    position: absolute;
+    top: -17.5px;
+    left:47%;
+    background-color: grey;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.verify.active,.verify.active::before{
+    background-color:green;
+}
+.h-600{
+    min-height: 500px;
+}

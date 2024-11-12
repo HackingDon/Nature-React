@@ -109,7 +109,14 @@ const Shop = () => {
     }
   }
   function addCart(index){
-    cards[index].available!='Out of stock'?cart == []?setCart(cards[index]):!cart.includes(cards[index])?setCart([...cart,cards[index]]):'':''
+    if(cards[index].available != 'Out of stock'){
+        cart == []?setCart(cards[index]):!cart.includes(cards[index])?setCart([...cart,cards[index]]):''
+        !cart.includes(cards[index])?alert('Item added'):alert('Item already added');
+    }
+    else{
+      alert('Not available')
+    }
+    
   }
   useEffect(() => {
     localStorage.setItem('data', JSON.stringify(cart));
@@ -179,7 +186,7 @@ const para = document.querySelectorAll("#para");
   }
   return (
     <div>
-      <Header value='1' cart={cart}/>
+      <Header value='1'/>
       <Banner head='Shop' src='src/components/images/shop-1.jpg' height='550px' p='Home/Shop' />
       <div className="container p-4">
         <div className="row w-100">
@@ -194,7 +201,7 @@ const para = document.querySelectorAll("#para");
               <option value='L2H'>Sort by price:Low to High</option>
               <option value='H2L'>Sort by price:High to Low</option>
             </select>
-            <button className="btn border-0"onClick={()=>handleFilter("Reload")}>
+            <button className="btn border-0 rt" onClick={()=>handleFilter("Reload")}>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
             <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
@@ -256,7 +263,7 @@ const para = document.querySelectorAll("#para");
                        <span className="fs-5 fm fw-bold">Price:${minValue}-${maxValue}</span>
                     </div>
                   </div>
-              <h3 className="fw-500 mt-5 pt-5 position-relative">Products</h3>
+              <h3 className="fw-500 mt-5 pt-5">Products</h3>
               <ul className="mt-4 p-0">
                 {jsonData.map((card,index)=>(
                       <li className={index<4 && card.available != 'Out of stock'?"d-flex gap-3 mt-3":'d-none'} key={index}>

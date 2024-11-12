@@ -39,6 +39,19 @@ h1,h2,h3,h4,h5,h6{
 }
 .dropdown-item:hover{
   background-color: #000 !important;
+  color: #ffffff !important;
+}
+.dropdown-menu{
+  width: 250px !important;
+}
+.cart-text{
+  position: relative;
+  top: -8px;
+  left: -3px;
+  height: 15px;
+  width: 15px;
+  font-size: 13px;
+  border-radius: 50%;
 }
 .bgc{
     background-color: #254151;

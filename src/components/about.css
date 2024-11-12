@@ -37,6 +37,7 @@
 }
 .prof-con:hover{
     opacity: 1;
+    transition: opacity 0.3s ease-out;
 }
 .prof-icon{
     height: 15px;
