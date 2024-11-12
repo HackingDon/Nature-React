@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Popup from "./Popup";
 import { DropdownItem } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const Header = (props) => {
 const [bgColor, setBgColor] = useState(''); 
 const [border,setBorder] = useState("");
 const [pop,setPop] = useState(false)
 const componentRef = useRef(null);
-const cart = JSON.parse(localStorage.getItem('data')) || []
+const cart = useSelector((state)=>state.cart)
 useEffect(() => {
   componentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }, []);

@@ -1,10 +1,13 @@
 import React, { useState,useEffect } from 'react'
 import Header from './Header';
 import './cart.css'
+import {removeItem,addQuan,decQuan,clearItems} from './CartSlice'
+import {useSelector,useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom';
 const Cart = () => {
     const [total,setTotal] = useState(0);
-    const [datas,setDatas] = useState(JSON.parse(localStorage.getItem('data')) || [])
+    const datas = useSelector((state)=>state.cart)
+    const dispatch = useDispatch()
     const [step,setStep] = useState(0)
     const [user,setUser] = useState({
         fname:'',
@@ -34,14 +37,9 @@ const Cart = () => {
         }
     }
     useEffect(() => {
-        localStorage.setItem('data',JSON.stringify(datas))
         const calculatedTotal = datas && datas.length>0 ? datas.reduce((sum, data) => sum + data.price*data.quantity, 0):0;
         setTotal(calculatedTotal);
       }, [datas]);
-      function remove(ind){
-        let list = datas.filter((_, i) => i !== ind);
-        setDatas(list)
-      }
       function count(button,index){
         if(button == 'plus'){
             setDatas(user =>
@@ -78,11 +76,11 @@ const Cart = () => {
                 <h2 className='w-25'>{data.title}</h2>
                 <h3 className='fm'>Price : ${data.price}.00</h3>
                 <div className="d-flex align-items-center gap-3">
-                    <button className="btn btn-outline-danger" onClick={()=>count('minus',index)}>-</button>
+                    <button className="btn btn-outline-danger" onClick={()=>dispatch(decQuan(data.title))}>-</button>
                     <p className='fs-5 mt-3'>Quantity:{data.quantity}</p>
-                    <button className="btn btn-outline-success" onClick={()=>count('plus',index)}>+</button>
+                    <button className="btn btn-outline-success" onClick={()=>dispatch(addQuan(data.title))}>+</button>
                 </div>
-                <button className="btn btn-danger" onClick={()=>remove(index)}>Remove</button>
+                <button className="btn btn-danger" onClick={()=>dispatch(removeItem(data.title))}>Remove</button>
             </div>
         </li>
         )):(
@@ -151,7 +149,7 @@ const Cart = () => {
         </div>
         <div className="d-flex w-100 justify-content-between mt-5">
             <button className="btn btn-success fs-5" onClick={()=>setStep(1)}>Previous Step</button>
-            <button className="btn btn-success fs-5" onClick={()=>{setStep(3);localStorage.clear()}}>Place Order</button>
+            <button className="btn btn-success fs-5" onClick={()=>{setStep(3);dispatch(clearItems())}}>Place Order</button>
         </div>
       </div>
       <div className={step == 3?'container':'d-none'}>
