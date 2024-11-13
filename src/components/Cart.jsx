@@ -40,22 +40,6 @@ const Cart = () => {
         const calculatedTotal = datas && datas.length>0 ? datas.reduce((sum, data) => sum + data.price*data.quantity, 0):0;
         setTotal(calculatedTotal);
       }, [datas]);
-      function count(button,index){
-        if(button == 'plus'){
-            setDatas(user =>
-                user.map((val,ind)=>
-                    ind == index?{...val,quantity:val.quantity+1}:val
-                )
-            )
-        }
-        else{
-            setDatas(user =>
-                user.map((val,ind)=>
-                    ind == index?{...val,quantity:val.quantity>1?val.quantity-1:val.quantity}:val
-                )
-            )
-        }
-      }
   return (
     <div>
       <Header/>
