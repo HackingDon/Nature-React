@@ -14,12 +14,12 @@ export const cartSlice = createSlice({
         },
         addQuan:(state,action) =>{
             const title = action.payload
-            const newstate = state.map(item=>item.title == title?{...item,quantity:item.quantity+1}:item.quantity)
+            const newstate = state.map(item=>item.title == title?{...item,quantity:item.quantity+1}:item)
             return newstate
         },
         decQuan:(state,action) =>{
             const title = action.payload
-            const newstate = state.map(item=>item.title == title?{...item,quantity:item.quantity>1?item.quantity-1:item.quantity}:item.quantity)
+            const newstate = state.map(item=>item.title == title?{...item,quantity:item.quantity>1?item.quantity-1:item.quantity}:item)
             return newstate
         },
         clearItems:()=>[]
