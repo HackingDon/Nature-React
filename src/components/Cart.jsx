@@ -17,9 +17,19 @@ const Cart = () => {
         lname:"",
         area:'',
         district:'',
-        phno:0,
-        pin:0
+        phno:null,
+        pin: null
     })
+    function isNumberKey(target,value) {
+       if(Number(target) || target == ''){
+        if(value == 'phno'){
+            setUser({...user,phno:target})
+        }
+        else{
+            setUser({...user,pin:target})
+        }
+       }
+      }
     const verify = [{
         class:'verify active col-4',
     },{
@@ -98,11 +108,11 @@ const Cart = () => {
             <div className="d-flex gap-3 mt-3">
                 <div className='w-50'>
                     <label>First Name</label>
-                <input type="text"  className="form-control" required onChange={(e)=>setUser({...user,fname:e.target.value})}/>
+                <input type="text"  className="form-control" value={user.fname} required onChange={(e)=>setUser({...user,fname:(/[a-zA-Z]/.test(e.target.value[e.target.value.length-1]) || e.target.value == '')?e.target.value:user.fname})}/>
                 </div>
                 <div className='w-50'>
                     <label>Last Name</label>
-                <input type="text"  className="form-control" required onChange={(e)=>setUser({...user,lname:e.target.value})}/>
+                <input type="text"  className="form-control" value={user.lname} required onChange={(e)=>setUser({...user,lname:(/[a-zA-Z]/.test(e.target.value[e.target.value.length-1]) || e.target.value == '')?e.target.value:user.lname})}/>
                 </div>
             </div>
             <label className='mt-3'>Area</label>
@@ -112,11 +122,11 @@ const Cart = () => {
             <div className="d-flex gap-3 mt-3">
                 <div className='w-50'>
                     <label>Phone Number</label>
-                <input type="tel"  className="form-control" required onChange={(e)=>setUser({...user,phno:e.target.value})}/>
+                <input type="tel"  className="form-control" value={user.phno} maxLength='10' onChange={(e)=>isNumberKey(e.target.value,'phno')} required/>
                 </div>
                 <div className='w-50'>
                     <label>Pincode</label>
-                <input type="tel"  className="form-control" required onChange={(e)=>setUser({...user,pin:e.target.value})}/>
+                <input type="tel"  className="form-control" value={user.pin} maxLength='6' onChange={(e)=>isNumberKey(e.target.value,'pin')} required/>
                 </div>
             </div>
             <div className="d-flex w-100 justify-content-between mt-5">
