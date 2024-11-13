@@ -4,10 +4,13 @@ import './cart.css'
 import {removeItem,addQuan,decQuan,clearItems} from './CartSlice'
 import {useSelector,useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom';
+import Alertmessage from './alertmessage';
 const Cart = () => {
     const [total,setTotal] = useState(0);
     const datas = useSelector((state)=>state.cart)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [showalert,setShowalert] = useState(false);
+    const [alert,setAlert] = useState("")
     const [step,setStep] = useState(0)
     const [user,setUser] = useState({
         fname:'',
@@ -26,9 +29,20 @@ const Cart = () => {
         class:'verify active col-4',
         cl:'verify col-4'
     }]
+    function handleAlert(){
+        setShowalert(true);
+        setTimeout(()=>{
+          setShowalert(false)
+        },2000)
+      }
     function buy(value){
         if(value == 1){
-            datas && datas.length>0?setStep(value):alert("Please add items to cart")
+            if(datas && datas.length>0)setStep(value)
+            else{
+                setAlert("Please add items to cart");
+                handleAlert()
+            }
+            
         }
     }
     function handleChange(){
@@ -43,6 +57,7 @@ const Cart = () => {
   return (
     <div>
       <Header/>
+      <Alertmessage alert={showalert} message={alert}/>
       <div className="w-100" style={{height:'200px',backgroundColor:"#254151"}}>
       </div>
       <div className={datas && datas.length>0 && step !=3 ? "w-100 row m-0 mt-5":'d-none'}>
@@ -73,7 +88,7 @@ const Cart = () => {
         </li>
         )}
       </ul>
-      <div className={step==0?'d-flex container mt-5 justify-content-end align-items-center gap-4':'d-none'}>
+      <div className={step==0?'d-flex container mt-5 mb-5 justify-content-end align-items-center gap-4':'d-none'}>
             <h4 className='fm'>Total Price: ${total}.00</h4>
             <button className="btn btn-outline-success fs-5 rounded-4" onClick={()=>buy(1)}>Buy Now</button>
         </div>

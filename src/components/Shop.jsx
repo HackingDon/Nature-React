@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Banner from "./Banner";
 import { addItem } from "./CartSlice";
 import { useSelector, useDispatch } from "react-redux";
+import Alertmessage from "./alertmessage";
 function Shop() {
   const jsonData = [
     {
@@ -193,11 +194,7 @@ function Shop() {
   return (
     <div>
       <Header value="1" />
-      {showalert && <div className="container-fluid position-fixed top-0" style={{height:'100vh',zIndex:'2'}}>
-      <div className="d-flex w-100 h-25 justify-content-center align-items-center">
-        <h5 className="text-center fh text-white bg-secondary p-3 rounded-3">{alert}</h5>
-      </div>
-      </div>}
+      <Alertmessage message={alert} alert={showalert}/>
       <Banner
         head="Shop"
         src="src/components/images/shop-1.jpg"
