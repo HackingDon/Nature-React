@@ -85,6 +85,8 @@ function Shop() {
   const cart = useSelector((state) => state.cart);
   const inputRef = useRef(null);
   const selectrRef = useRef(null);
+  const [showalert,setShowalert] = useState(false);
+  const [alert,setAlert] = useState("")
   const [cards, setCards] = useState(jsonData);
   const handleMinChange = () => {
     const value = Math.min(Number(input1ref.current.value), maxValue - 10);
@@ -108,12 +110,23 @@ function Shop() {
       para[index].innerText = "Add to Cart";
     }
   }
+  function handleAlert(){
+    setShowalert(true);
+    setTimeout(()=>{
+      setShowalert(false)
+    },2000)
+  }
   function addCart(index) {
     if (cards[index].available != "Out of stock") {
-      cart.includes(cards[index])?"":dispatch(addItem(cards[index]))
-      alert('item added')
+      if(cart.includes(cards[index]))setAlert("Already Added")
+      else{
+      dispatch(addItem(cards[index]))
+      setAlert("Item Added!");
+      }
+      handleAlert()
     } else {
-      alert("Not available");
+      setAlert("Not available");
+      handleAlert()
     }
   }
   useEffect(() => {
@@ -180,6 +193,11 @@ function Shop() {
   return (
     <div>
       <Header value="1" />
+      {showalert && <div className="container-fluid position-fixed top-0" style={{height:'100vh',zIndex:'2'}}>
+      <div className="d-flex w-100 h-25 justify-content-center align-items-center">
+        <h5 className="text-center fh text-white bg-secondary p-3 rounded-3">{alert}</h5>
+      </div>
+      </div>}
       <Banner
         head="Shop"
         src="src/components/images/shop-1.jpg"
