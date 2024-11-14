@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Footer = () => {
+  const work = ["Saving the Arctic","Fighting Global Warming","Watch For Climate Action","Protecting Our Ocean","6 Ways You Can Eat Better"];
+  const news = ["Gallery","Embedded","Blog Short Code","Images","Events"];
+  const about = ["Join Us","About Us","Shop"]
   return (
     <div>
       <footer className="footer w-100">
@@ -12,30 +15,25 @@ const Footer = () => {
           <div className="col-xxl-3 col-md-6 mt-2">
             <h5 className="fw-bold color fm">What We Do</h5>
             <ul className="p-0 mt-4">
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Saving the Arctic</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Fighting Global Warming</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Watch For Climate Action</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Protecting Our Ocean</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">6 Ways You Can Eat Better</a></li>
+              {work.map((con)=>(
+                <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
+              ))}
             </ul>
           </div>
           <div className="col-xxl-3 col-md-6 mt-2">
             <h5 className="fw-bold color fm">News & Media</h5>
             <ul className="p-0 mt-4">
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Gallery</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Embedded</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Blog Short Code</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Images</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Events</a></li>
+              {news.map((con)=>(
+                <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
+              ))}
             </ul>
           </div>
           <div className="col-xxl-3 col-md-6 mt-2">
             <h5 className="fw-bold color fm">About Us</h5>
             <ul className="p-0 mt-4">
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Join Us</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold"></a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">About Us</a></li>
-              <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">Shop</a></li>
+             {about.map((con)=>(
+               <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
+             ))}
             </ul>
           </div>
         </div>
