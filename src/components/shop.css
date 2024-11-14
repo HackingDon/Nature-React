@@ -110,7 +110,7 @@ option{
 }
 .card-img-label{
     position: absolute;
-    left: 60%;
+    right: 10%;
     background-color: rgb(255, 187, 0);
     padding: 5px 10px;
     border-radius: 15px;
