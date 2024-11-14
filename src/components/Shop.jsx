@@ -377,7 +377,7 @@ function Shop() {
                   </li>
                 ))}
               </ul>
-              <Link to="/cart" state={cart}>
+              <Link to="/cart">
                 <button className="btn btn-outline-dark mt-5 ms-5 fs-4">
                   CheckOut ({cart.length})
                 </button>
