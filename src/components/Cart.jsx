@@ -17,8 +17,8 @@ const Cart = () => {
         lname:"",
         area:'',
         district:'',
-        phno:null,
-        pin: null
+        phno:'',
+        pin: ''
     })
     function isNumberKey(target,value) {
        if(Number(target) || target == ''){
