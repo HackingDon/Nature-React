@@ -94,7 +94,7 @@
     font-size: 60px;
 }
 .final-about{
-    background-image: url(images/about7.jpg);
+    background-image: url(../images/about7.jpg);
     height: 700px;
     background-size: cover;
 }
