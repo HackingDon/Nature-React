@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./components/home/Home";
-import Join from "./components/Join";
+import Join from "./components/join/Join";
 import Shop from "./components/shopping/Shop";
 import About from "./components/about/About";
 import Contact from "./components/contact/Contact";

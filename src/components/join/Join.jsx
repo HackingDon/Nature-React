@@ -3,7 +3,7 @@ import "./join.css";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import { Link } from "react-router-dom";
-import Banner from "../helper/Banner";
+import Banner from "../utils/Banner";
 
 const Join = () => {
   return (
