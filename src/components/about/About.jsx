@@ -2,9 +2,9 @@ import React from "react";
 import Header from "../utils/Header.jsx";
 import Footer from "../utils/Footer.jsx";
 import "./about.css";
-import Banner from "../helper/Banner.jsx";
-import Cardslider from "../helper/Cardslider.jsx";
-import Beforefooter from "../helper/Beforefooter.jsx";
+import Banner from "../utils/Banner.jsx";
+import Cardslider from "../utils/Cardslider.jsx";
+import Beforefooter from "../utils/Beforefooter.jsx";
 const About = () => {
   const rows = [
     {

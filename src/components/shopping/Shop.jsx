@@ -3,7 +3,7 @@ import "./shop.css";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import { Link } from "react-router-dom";
-import Banner from "../helper/Banner";
+import Banner from "../utils/Banner";
 import { addItem } from "../store/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Alertmessage from "../helper/alertmessage";

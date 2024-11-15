@@ -4,7 +4,7 @@ import Footer from "../utils/Footer";
 import "./contact.css";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import Banner from "../helper/Banner";
+import Banner from "../utils/Banner";
 
 const Contact = () => {
   const position = [34.083273, -118.359852];

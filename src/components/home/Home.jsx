@@ -5,8 +5,8 @@ import "./home.css";
 import useIntersectionObserver from "../helper/useIntersectionObserver";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
-import Cardslider from "../helper/Cardslider";
-import Beforefooter from "../helper/Beforefooter";
+import Cardslider from "../utils/Cardslider";
+import Beforefooter from "../utils/Beforefooter";
 const Home = () => {
   const [src, setSrc] = useState("");
   const [head, setHead] = useState("");
