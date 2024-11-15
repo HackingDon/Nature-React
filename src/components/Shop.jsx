@@ -183,6 +183,7 @@ function Shop() {
     let data = jsonData.filter((item) => item.label.includes(value));
     if (value == "Reload") {
       setMessage("");
+      inputRef.current.value ='';
       setCards(jsonData);
       setMinValue(0);
       setMaxValue(70);

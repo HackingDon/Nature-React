@@ -15,24 +15,24 @@ const Footer = () => {
           <div className="col-xxl-3 col-md-6 mt-2">
             <h5 className="fw-bold color fm">What We Do</h5>
             <ul className="p-0 mt-4">
-              {work.map((con)=>(
-                <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
+              {work.map((con,index)=>(
+                <li className="link"key={index}><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
               ))}
             </ul>
           </div>
           <div className="col-xxl-3 col-md-6 mt-2">
             <h5 className="fw-bold color fm">News & Media</h5>
             <ul className="p-0 mt-4">
-              {news.map((con)=>(
-                <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
+              {news.map((con,index)=>(
+                <li className="link"key={index}><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
               ))}
             </ul>
           </div>
           <div className="col-xxl-3 col-md-6 mt-2">
             <h5 className="fw-bold color fm">About Us</h5>
             <ul className="p-0 mt-4">
-             {about.map((con)=>(
-               <li className="link"><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
+             {about.map((con,index)=>(
+               <li className="link" key={index}><a href="#" className="fm text-secondary fs-7 fw-bold">{con}</a></li>
              ))}
             </ul>
           </div>

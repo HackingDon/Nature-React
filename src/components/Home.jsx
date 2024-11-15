@@ -99,20 +99,11 @@ const images = [{
 }]
 const [fl,setFl]= useState(true)
 function cardSlide(side){
-  if(side == 'right'){
     scroll.current.scrollTo({
-      left:400,
+      left:side == 'right' ? 400 : -400,
       behaviour:'smooth'
     })
-    setFl(false)
-  }
-  else{
-    scroll.current.scrollTo({
-      left:-400,
-      behaviour:'smooth'
-    })
-    setFl(true)
-  }
+    setFl(side == 'right' ? false : true)
 }
 useEffect(()=>{
   let card = setInterval(()=>{
