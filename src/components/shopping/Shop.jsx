@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./shop.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../utils/Header";
+import Footer from "../utils/Footer";
 import { Link } from "react-router-dom";
-import Banner from "./Banner";
-import { addItem } from "./CartSlice";
+import Banner from "../helper/Banner";
+import { addItem } from "../store/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
-import Alertmessage from "./alertmessage";
+import Alertmessage from "../helper/alertmessage";
 function Shop() {
   const jsonData = [
     {
@@ -86,8 +86,8 @@ function Shop() {
   const cart = useSelector((state) => state.cart);
   const inputRef = useRef(null);
   const selectrRef = useRef(null);
-  const [showalert,setShowalert] = useState(false);
-  const [alert,setAlert] = useState("")
+  const [showalert, setShowalert] = useState(false);
+  const [alert, setAlert] = useState("");
   const [cards, setCards] = useState(jsonData);
   const handleMinChange = () => {
     const value = Math.min(Number(input1ref.current.value), maxValue - 10);
@@ -111,23 +111,23 @@ function Shop() {
       para[index].innerText = "Add to Cart";
     }
   }
-  function handleAlert(){
+  function handleAlert() {
     setShowalert(true);
-    setTimeout(()=>{
-      setShowalert(false)
-    },2000)
+    setTimeout(() => {
+      setShowalert(false);
+    }, 2000);
   }
   function addCart(index) {
     if (cards[index].available != "Out of stock") {
-      if(cart.includes(cards[index]))setAlert("Already Added")
-      else{
-      dispatch(addItem(cards[index]))
-      setAlert("Item Added!");
+      if (cart.includes(cards[index])) setAlert("Already Added");
+      else {
+        dispatch(addItem(cards[index]));
+        setAlert("Item Added!");
       }
-      handleAlert()
+      handleAlert();
     } else {
       setAlert("Not available");
-      handleAlert()
+      handleAlert();
     }
   }
   useEffect(() => {
@@ -183,7 +183,7 @@ function Shop() {
     let data = jsonData.filter((item) => item.label.includes(value));
     if (value == "Reload") {
       setMessage("");
-      inputRef.current.value ='';
+      inputRef.current.value = "";
       setCards(jsonData);
       setMinValue(0);
       setMaxValue(70);
@@ -195,7 +195,7 @@ function Shop() {
   return (
     <div>
       <Header value="1" />
-      <Alertmessage message={alert} alert={showalert}/>
+      <Alertmessage message={alert} alert={showalert} />
       <Banner
         head="Shop"
         src="src/components/images/shop-1.jpg"

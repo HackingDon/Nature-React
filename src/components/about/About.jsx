@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
+import Header from "../utils/Header.jsx";
+import Footer from "../utils/Footer.jsx";
 import "./about.css";
-import Banner from "./Banner.jsx";
-import Cardslider from "./Cardslider.jsx";
-import Beforefooter from "./Beforefooter.jsx";
+import Banner from "../helper/Banner.jsx";
+import Cardslider from "../helper/Cardslider.jsx";
+import Beforefooter from "../helper/Beforefooter.jsx";
 const About = () => {
   const rows = [
     {
@@ -43,18 +43,28 @@ const About = () => {
   ];
   return (
     <div>
-      <Header value='3' />
-      <Banner src='src/images/slider-1.jpg' height = '700px' head='About Us'/>
+      <Header value="3" />
+      <Banner src="src/images/slider-1.jpg" height="700px" head="About Us" />
       <div className="container-fluid body-about p-0">
-        {rows.map((row,index) => (
+        {rows.map((row, index) => (
           <div className="row w-100 p-0" key={index}>
             <div
               className="col-4 about-col"
-              style={{ backgroundImage: `url(${row.src})` }}>
+              style={{ backgroundImage: `url(${row.src})` }}
+            >
               <div className="d-flex justify-content-center align-items-center h-100">
                 <div className="w-75 text-white">
                   <h1 className="fw-bold fn">{row.img_h}</h1>
-                  <a href="https://www.youtube.com/watch?v=OfV3VNgjpvw" target="blank"><img className={row.png != "" ? "mt-5" : ""} src={row.png} alt=""/></a>
+                  <a
+                    href="https://www.youtube.com/watch?v=OfV3VNgjpvw"
+                    target="blank"
+                  >
+                    <img
+                      className={row.png != "" ? "mt-5" : ""}
+                      src={row.png}
+                      alt=""
+                    />
+                  </a>
                   <p className="mt-4">
                     Water covers two-thirds of the surface of the Earth, but
                     Fresh water is 0.002% on Earth. What will your children
@@ -97,8 +107,11 @@ const About = () => {
             <div className="w-70">
               <div className="row w-100 m-0">
                 <h1 className="fw-bold color text-center fn">Organizers</h1>
-                {prof.map((profile,index) => (
-                  <div className="col-4 mt-5 d-flex flex-column align-items-center" key={index}>
+                {prof.map((profile, index) => (
+                  <div
+                    className="col-4 mt-5 d-flex flex-column align-items-center"
+                    key={index}
+                  >
                     <div className="prof">
                       <img className="prof-img" src={profile.src} alt="" />
                       <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-3 prof-con">
@@ -162,8 +175,8 @@ const About = () => {
             </p>
           </div>
         </div>
-        <Cardslider/>
-        <Beforefooter/>
+        <Cardslider />
+        <Beforefooter />
       </div>
       <Footer />
     </div>
